@@ -1,0 +1,85 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+*.tiff
+*.hdf5
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables / secrets
+.env
+*.env
+.env.local
+
+# Logs
+logs/
+*.log
+*.out
+*.err
+
+# Data files (large datasets)
+data/imerg_data/
+data/raw/
+data/processed/
+*.nc
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.parquet
+*.csv
+*.zarr/
+
+# Model checkpoints and weights
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.joblib
+*.h5
+models/saved/
+wandb/
+
+# TensorBoard
+tensorboard/
+runs/
+
+# Profiling
+*.prof
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# SLURM output files
+slurm-*.out
+slurm-*.err
