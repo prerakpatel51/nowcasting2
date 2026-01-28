@@ -1,23 +1,22 @@
 #!/bin/bash
 # =============================================================================
-# SLURM Job Script: IMERG Data Downloader
+# SLURM Job Script: IMERG GeoTIFF to HDF5 Converter
 # =============================================================================
 #
 # Description:
-#   Downloads NASA GPM IMERG precipitation data for a specified geographic
-#   region and time period. Wraps download_imerg_data.py which reads all
-#   configuration from config.py.
+#   Converts IMERG precipitation GeoTIFF files to HDF5 format optimized for
+#   deep learning dataloaders. Processes files in batches to avoid memory issues.
 #
 # Usage:
-#   sbatch download_imerg.slurm
+#   sbatch convert_to_hdf5.slurm
 #
 # Configuration:
-#   All parameters (date range, region, credentials) are set in config.py.
-#   Environment variables below can override config.py defaults if needed.
+#   All parameters are set in config.py. Environment variables below can
+#   override defaults if needed.
 #
 # Output:
-#   - Processed GeoTIFF files: <PROJECT_ROOT>/data/imerg_data/imerg.YYYYMMDDHHMM.tif
-#   - Job logs: <PROJECT_ROOT>/logs/download_logs/imerg_download_<jobid>.out
+#   - HDF5 file: <PROJECT_ROOT>/data/imerg_data.h5
+#   - Job logs: <PROJECT_ROOT>/logs/download_logs/hdf5_convert_<jobid>.out
 #
 # =============================================================================
 
@@ -25,29 +24,25 @@
 # SLURM Resource Configuration
 # -----------------------------------------------------------------------------
 
-#SBATCH --job-name=imerg_download
-#SBATCH --partition=h200
+#SBATCH --job-name=imerg_hdf5
+#SBATCH --partition=normal
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --mem=32G
+#SBATCH --mem=16G
+#SBATCH --time=04:00:00
 
 # -----------------------------------------------------------------------------
 # Determine paths relative to this script's location
 # -----------------------------------------------------------------------------
 
-# Get the directory containing this script
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-# Project root is two levels up from script directory
 PROJECT_ROOT="$(dirname "$(dirname "$SCRIPT_DIR")")"
-
-# Log directory
 LOG_DIR="${PROJECT_ROOT}/logs/download_logs"
 mkdir -p "$LOG_DIR"
 
 # Redirect output to log directory
-exec > "${LOG_DIR}/imerg_download_${SLURM_JOB_ID}.out" 2> "${LOG_DIR}/imerg_download_${SLURM_JOB_ID}.err"
+exec > "${LOG_DIR}/hdf5_convert_${SLURM_JOB_ID}.out" 2> "${LOG_DIR}/hdf5_convert_${SLURM_JOB_ID}.err"
 
 # -----------------------------------------------------------------------------
 # Optional Environment Variable Overrides
@@ -55,25 +50,14 @@ exec > "${LOG_DIR}/imerg_download_${SLURM_JOB_ID}.out" 2> "${LOG_DIR}/imerg_down
 # Uncomment and modify these to override config.py defaults for this job.
 # If not set, values from config.py will be used.
 
-# Geographic bounds (decimal degrees)
-# export XMIN="-5.5"
-# export XMAX="2.5"
-# export YMIN="9.0"
-# export YMAX="17.0"
+# Output directory for HDF5 file
+# export HDF5_OUTPUT_DIR="${PROJECT_ROOT}/data/"
 
-# Output grid dimensions (pixels)
-# export OUTPUT_HEIGHT="64"
-# export OUTPUT_WIDTH="64"
+# HDF5 output filename
+# export HDF5_FILENAME="imerg_data.h5"
 
-# Time period (format: YYYY-MM-DD-HH-MM)
-# export START_DATE="2014-06-01-00-00"
-# export END_DATE="2014-06-03-00-00"
-
-# Output folder (defaults to PROJECT_ROOT/data/imerg_data/)
-# export OUTPUT_FOLDER="${PROJECT_ROOT}/data/imerg_data/"
-
-# NASA PPS credentials
-# export EMAIL="your.email@example.com"
+# Batch size for processing (number of files per batch)
+# export HDF5_BATCH_SIZE="1000"
 
 # =============================================================================
 # EXECUTION
@@ -89,17 +73,20 @@ conda activate "$CONDA_ENV"
 
 # Print configuration summary
 echo "============================================================"
-echo "Starting IMERG download..."
+echo "IMERG GeoTIFF to HDF5 Converter"
 echo "============================================================"
+echo "Job ID:           $SLURM_JOB_ID"
+echo "Node:             $SLURMD_NODENAME"
 echo "Script directory: $SCRIPT_DIR"
-echo "Project root: $PROJECT_ROOT"
-echo "Log directory: $LOG_DIR"
+echo "Project root:     $PROJECT_ROOT"
+echo "Log directory:    $LOG_DIR"
+echo "Start time:       $(date)"
 echo "============================================================"
 
-# Run the download script from the script directory
+# Run the conversion script
 cd "$SCRIPT_DIR"
-python download_imerg_data.py
+python convert_to_hdf5.py
 
 echo "============================================================"
-echo "Job completed."
+echo "Job completed at: $(date)"
 echo "============================================================"

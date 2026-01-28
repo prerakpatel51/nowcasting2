@@ -11,13 +11,15 @@ Configuration Sections:
     - Grid Configuration: Output dimensions
     - Time Configuration: Default date range
     - NASA PPS Configuration: Server URL and authentication
+    - HDF5 Configuration: Conversion settings for HDF5 output
 
 Usage:
     from config import (
         DATA_DIR, LOG_DIR, IMERG_DATA_DIR,
         XMIN, XMAX, YMIN, YMAX,
         OUTPUT_HEIGHT, OUTPUT_WIDTH,
-        EMAIL, SERVER_PATH
+        EMAIL, SERVER_PATH,
+        HDF5_OUTPUT_DIR, HDF5_FILENAME, HDF5_BATCH_SIZE
     )
 """
 
@@ -110,6 +112,32 @@ CONDA_ENV = 'tito_env'
 # When False: Actually downloads and processes missing files
 
 DRY_RUN = False
+
+# =============================================================================
+# HDF5 CONVERSION CONFIGURATION
+# =============================================================================
+# Settings for converting IMERG GeoTIFF files to HDF5 format
+
+# Output directory for HDF5 file
+HDF5_OUTPUT_DIR = DATA_DIR
+
+# HDF5 output filename
+HDF5_FILENAME = 'imerg_data.h5'
+
+# Batch size for processing (number of files to load at once)
+# Increase for faster processing if memory allows
+# Decrease if running out of memory
+HDF5_BATCH_SIZE = 1000
+
+# Chunk size for HDF5 datasets (48 = 1 day of 30-min data)
+# Affects read performance for dataloaders
+HDF5_TEMPORAL_CHUNK_SIZE = 48
+
+# Compression algorithm: 'lzf' (fast) or 'gzip' (smaller)
+HDF5_COMPRESSION = 'lzf'
+
+# NoData value for missing/invalid precipitation data
+HDF5_NODATA_VALUE = -9999.0
 
 
 def ensure_directories():

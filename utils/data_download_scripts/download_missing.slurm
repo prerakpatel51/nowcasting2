@@ -39,10 +39,6 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=32G
 
-# Log paths (absolute paths required for SLURM directives)
-#SBATCH --output=/home1/ppatel2025/nowcasting2/logs/download_logs/imerg_missing_%j.out
-#SBATCH --error=/home1/ppatel2025/nowcasting2/logs/download_logs/imerg_missing_%j.err
-
 # =============================================================================
 # EXECUTION
 # =============================================================================
@@ -57,9 +53,16 @@ PROJECT_ROOT="$(dirname "$(dirname "$SCRIPT_DIR")")"
 LOG_DIR="${PROJECT_ROOT}/logs/download_logs"
 mkdir -p "$LOG_DIR"
 
+# Redirect output to log directory
+exec > "${LOG_DIR}/imerg_missing_${SLURM_JOB_ID}.out" 2> "${LOG_DIR}/imerg_missing_${SLURM_JOB_ID}.err"
+
+# Read conda config from Python config file
+CONDA_PATH=$(python3 -c "import sys; sys.path.insert(0, '${SCRIPT_DIR}'); from config import CONDA_PATH; print(CONDA_PATH)")
+CONDA_ENV=$(python3 -c "import sys; sys.path.insert(0, '${SCRIPT_DIR}'); from config import CONDA_ENV; print(CONDA_ENV)")
+
 # Initialize conda environment
-source /home1/ppatel2025/miniconda3/etc/profile.d/conda.sh
-conda activate tito_env
+source "$CONDA_PATH"
+conda activate "$CONDA_ENV"
 
 # Print configuration summary
 echo "============================================================"
