@@ -1,0 +1,102 @@
+#!/bin/bash
+# =============================================================================
+# SLURM Job Script: IMERG Data Downloader
+# =============================================================================
+#
+# Description:
+#   Downloads NASA GPM IMERG precipitation data for a specified geographic
+#   region and time period. Wraps download_imerg_data.py which reads all
+#   configuration from config.py.
+#
+# Usage:
+#   sbatch download_imerg.slurm
+#
+# Configuration:
+#   All parameters (date range, region, credentials) are set in config.py.
+#   Environment variables below can override config.py defaults if needed.
+#
+# Output:
+#   - Processed GeoTIFF files: <PROJECT_ROOT>/data/imerg_data/imerg.YYYYMMDDHHMM.tif
+#   - Job logs: <PROJECT_ROOT>/logs/download_logs/imerg_download_<jobid>.out
+#
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# SLURM Resource Configuration
+# -----------------------------------------------------------------------------
+
+#SBATCH --job-name=imerg_download
+#SBATCH --partition=h200
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=32G
+
+# -----------------------------------------------------------------------------
+# Determine paths relative to this script's location
+# -----------------------------------------------------------------------------
+
+# Get the directory containing this script
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Project root is two levels up from script directory
+PROJECT_ROOT="$(dirname "$(dirname "$SCRIPT_DIR")")"
+
+# Log directory
+LOG_DIR="${PROJECT_ROOT}/logs/download_logs"
+mkdir -p "$LOG_DIR"
+
+# Set SLURM output paths (these are set at job submission, so we use absolute paths)
+#SBATCH --output=/home1/ppatel2025/nowcasting2/logs/download_logs/imerg_download_%j.out
+#SBATCH --error=/home1/ppatel2025/nowcasting2/logs/download_logs/imerg_download_%j.err
+
+# -----------------------------------------------------------------------------
+# Optional Environment Variable Overrides
+# -----------------------------------------------------------------------------
+# Uncomment and modify these to override config.py defaults for this job.
+# If not set, values from config.py will be used.
+
+# Geographic bounds (decimal degrees)
+# export XMIN="-5.5"
+# export XMAX="2.5"
+# export YMIN="9.0"
+# export YMAX="17.0"
+
+# Output grid dimensions (pixels)
+# export OUTPUT_HEIGHT="64"
+# export OUTPUT_WIDTH="64"
+
+# Time period (format: YYYY-MM-DD-HH-MM)
+# export START_DATE="2014-06-01-00-00"
+# export END_DATE="2014-06-03-00-00"
+
+# Output folder (defaults to PROJECT_ROOT/data/imerg_data/)
+# export OUTPUT_FOLDER="${PROJECT_ROOT}/data/imerg_data/"
+
+# NASA PPS credentials
+# export EMAIL="your.email@example.com"
+
+# =============================================================================
+# EXECUTION
+# =============================================================================
+
+# Initialize conda environment
+source /home1/ppatel2025/miniconda3/etc/profile.d/conda.sh
+conda activate tito_env
+
+# Print configuration summary
+echo "============================================================"
+echo "Starting IMERG download..."
+echo "============================================================"
+echo "Script directory: $SCRIPT_DIR"
+echo "Project root: $PROJECT_ROOT"
+echo "Log directory: $LOG_DIR"
+echo "============================================================"
+
+# Run the download script from the script directory
+cd "$SCRIPT_DIR"
+python download_imerg_data.py
+
+echo "============================================================"
+echo "Job completed."
+echo "============================================================"
