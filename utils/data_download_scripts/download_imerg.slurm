@@ -31,23 +31,15 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
+#SBATCH --output=/home1/ppatel2025/nowcasting2/logs/download_logs/imerg_download_%j.out
+#SBATCH --error=/home1/ppatel2025/nowcasting2/logs/download_logs/imerg_download_%j.err
 
 # -----------------------------------------------------------------------------
-# Determine paths relative to this script's location
+# Paths
 # -----------------------------------------------------------------------------
 
-# Get the directory containing this script
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-# Project root is two levels up from script directory
-PROJECT_ROOT="$(dirname "$(dirname "$SCRIPT_DIR")")"
-
-# Log directory
-LOG_DIR="${PROJECT_ROOT}/logs/download_logs"
-mkdir -p "$LOG_DIR"
-
-# Redirect output to log directory
-exec > "${LOG_DIR}/imerg_download_${SLURM_JOB_ID}.out" 2> "${LOG_DIR}/imerg_download_${SLURM_JOB_ID}.err"
+SCRIPT_DIR="/home1/ppatel2025/nowcasting2/utils/data_download_scripts"
+PROJECT_ROOT="/home1/ppatel2025/nowcasting2"
 
 # -----------------------------------------------------------------------------
 # Optional Environment Variable Overrides
@@ -79,13 +71,9 @@ exec > "${LOG_DIR}/imerg_download_${SLURM_JOB_ID}.out" 2> "${LOG_DIR}/imerg_down
 # EXECUTION
 # =============================================================================
 
-# Read conda config from Python config file
-CONDA_PATH=$(python3 -c "import sys; sys.path.insert(0, '${SCRIPT_DIR}'); from config import CONDA_PATH; print(CONDA_PATH)")
-CONDA_ENV=$(python3 -c "import sys; sys.path.insert(0, '${SCRIPT_DIR}'); from config import CONDA_ENV; print(CONDA_ENV)")
-
 # Initialize conda environment
-source "$CONDA_PATH"
-conda activate "$CONDA_ENV"
+source /home1/ppatel2025/miniconda3/etc/profile.d/conda.sh
+conda activate tito_env
 
 # Print configuration summary
 echo "============================================================"

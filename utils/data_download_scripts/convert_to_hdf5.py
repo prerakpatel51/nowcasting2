@@ -87,18 +87,22 @@ def parse_filename_timestamp(filename: str) -> Optional[datetime.datetime]:
     """
     Extract datetime from IMERG filename.
 
+    IMERG filenames use UTC time. The returned datetime is timezone-aware (UTC).
+
     Args:
         filename: Filename in format 'imerg.YYYYMMDDHHMM.tif'
 
     Returns:
-        Parsed datetime object, or None if parsing fails.
+        Parsed datetime object (UTC timezone-aware), or None if parsing fails.
     """
     basename = os.path.basename(filename)
     try:
         parts = basename.split('.')
         if len(parts) >= 2 and parts[0] == 'imerg':
             timestamp_str = parts[1]
-            return datetime.datetime.strptime(timestamp_str, '%Y%m%d%H%M')
+            # Parse as naive datetime then make it UTC-aware
+            naive_dt = datetime.datetime.strptime(timestamp_str, '%Y%m%d%H%M')
+            return naive_dt.replace(tzinfo=datetime.timezone.utc)
     except (ValueError, IndexError):
         pass
     return None
@@ -232,6 +236,7 @@ def create_hdf5_file(output_path: str, num_samples: int, height: int, width: int
     meta.attrs['nodata_value'] = NODATA_VALUE
     meta.attrs['units'] = 'mm/hr'
     meta.attrs['source'] = 'NASA GPM IMERG Early Run (3B-HHR-E)'
+    meta.attrs['timezone'] = 'UTC'
     meta.attrs['temporal_resolution_minutes'] = 30
     meta.attrs['spatial_resolution'] = f'{(XMAX-XMIN)/width:.4f} x {(YMAX-YMIN)/height:.4f} degrees'
     meta.attrs['created'] = datetime.datetime.now().isoformat()
