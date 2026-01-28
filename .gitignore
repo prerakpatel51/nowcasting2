@@ -38,11 +38,7 @@ Thumbs.db
 *.env
 .env.local
 
-# Logs
-logs/
-*.log
-*.out
-*.err
+
 
 # Data files (large datasets)
 data/imerg_data/
