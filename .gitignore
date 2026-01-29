@@ -40,10 +40,6 @@ Thumbs.db
 
 
 
-# Data files (large datasets)
-data/imerg_data/
-data/imerg_data_backup/
-
 data/raw/
 data/processed/
 *.nc
@@ -54,6 +50,7 @@ data/processed/
 *.parquet
 *.csv
 *.zarr/
+*.tif
 
 # Model checkpoints and weights
 checkpoints/
