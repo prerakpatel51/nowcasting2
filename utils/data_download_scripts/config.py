@@ -41,8 +41,8 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(SCRIPT_DIR))
 # Data directory (PROJECT_ROOT/data/)
 DATA_DIR = os.path.join(PROJECT_ROOT, 'data')
 
-# IMERG data storage directory
-IMERG_DATA_DIR = os.path.join(DATA_DIR, 'imerg_data')
+# IMERG data storage directory (GeoTIFF files)
+IMERG_DATA_DIR = os.path.join(DATA_DIR, 'imerg_data_tiff_clean')
 
 # Log directory for SLURM job outputs
 LOG_DIR = os.path.join(PROJECT_ROOT, 'logs', 'download_logs')
@@ -119,7 +119,7 @@ DRY_RUN = False
 # Settings for converting IMERG GeoTIFF files to HDF5 format
 
 # Output directory for HDF5 file
-HDF5_OUTPUT_DIR = DATA_DIR
+HDF5_OUTPUT_DIR = os.path.join(DATA_DIR, 'imerg_data_h5_clean')
 
 # HDF5 output filename
 HDF5_FILENAME = 'imerg_data.h5'
@@ -144,12 +144,13 @@ def ensure_directories():
     """
     Create required directories if they don't exist.
 
-    Creates the data directory, IMERG data directory, and log directory.
-    Call this function at the start of download scripts to ensure
-    all necessary directories are in place.
+    Creates the data directory, IMERG data directory, HDF5 output directory,
+    and log directory. Call this function at the start of download scripts
+    to ensure all necessary directories are in place.
     """
     os.makedirs(DATA_DIR, exist_ok=True)
     os.makedirs(IMERG_DATA_DIR, exist_ok=True)
+    os.makedirs(HDF5_OUTPUT_DIR, exist_ok=True)
     os.makedirs(LOG_DIR, exist_ok=True)
 
 

@@ -16,7 +16,7 @@
 #   Environment variables below can override config.py defaults if needed.
 #
 # Output:
-#   - Processed GeoTIFF files: <PROJECT_ROOT>/data/imerg_data/imerg.YYYYMMDDHHMM.tif
+#   - Processed GeoTIFF files: <PROJECT_ROOT>/data/imerg_data_tiff_clean/imerg.YYYYMMDDHHMM.tif
 #   - Job logs: <PROJECT_ROOT>/logs/download_logs/imerg_download_<jobid>.out
 #
 # =============================================================================
@@ -61,8 +61,8 @@ PROJECT_ROOT="/home1/ppatel2025/nowcasting2"
 # export START_DATE="2014-06-01-00-00"
 # export END_DATE="2014-06-03-00-00"
 
-# Output folder (defaults to PROJECT_ROOT/data/imerg_data/)
-# export OUTPUT_FOLDER="${PROJECT_ROOT}/data/imerg_data/"
+# Output folder (defaults to PROJECT_ROOT/data/imerg_data_tiff_clean/)
+# export OUTPUT_FOLDER="${PROJECT_ROOT}/data/imerg_data_tiff_clean/"
 
 # NASA PPS credentials
 # export EMAIL="your.email@example.com"
@@ -81,7 +81,6 @@ echo "Starting IMERG download..."
 echo "============================================================"
 echo "Script directory: $SCRIPT_DIR"
 echo "Project root: $PROJECT_ROOT"
-echo "Log directory: $LOG_DIR"
 echo "============================================================"
 
 # Run the download script from the script directory

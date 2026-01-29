@@ -15,7 +15,7 @@
 #   override defaults if needed.
 #
 # Output:
-#   - HDF5 file: <PROJECT_ROOT>/data/imerg_data.h5
+#   - HDF5 file: <PROJECT_ROOT>/data/imerg_data_h5_clean/imerg_data.h5
 #   - Job logs: <PROJECT_ROOT>/logs/download_logs/hdf5_convert_<jobid>.out
 #
 # =============================================================================
@@ -49,7 +49,7 @@ PROJECT_ROOT="/home1/ppatel2025/nowcasting2"
 # If not set, values from config.py will be used.
 
 # Output directory for HDF5 file
-# export HDF5_OUTPUT_DIR="${PROJECT_ROOT}/data/"
+# export HDF5_OUTPUT_DIR="${PROJECT_ROOT}/data/imerg_data_h5_clean/"
 
 # HDF5 output filename
 # export HDF5_FILENAME="imerg_data.h5"

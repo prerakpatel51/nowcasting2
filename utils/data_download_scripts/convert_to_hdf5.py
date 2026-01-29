@@ -1,9 +1,8 @@
 """
 IMERG GeoTIFF to HDF5 Converter
 
-Converts NASA GPM IMERG precipitation GeoTIFF files to HDF5 format optimized
-for deep learning dataloaders. Processes files in batches to avoid loading
-the entire dataset into memory.
+Converts NASA GPM IMERG precipitation GeoTIFF files to HDF5 format.
+Processes files in batches to avoid loading the entire dataset into memory.
 
 HDF5 Structure:
     /precipitation     - (N, 64, 64) float32 dataset, chunked for efficient access
@@ -21,13 +20,10 @@ HDF5 Structure:
         - units: Precipitation units (mm/hr)
         - source: Data source description
         - created: File creation timestamp
-
 Features:
     - Memory-efficient batch processing
     - Chronologically sorted output
-    - HDF5 chunking optimized for sequential and random access
     - LZF compression for fast read/write with good compression
-    - Per-image statistics (mean, min, max) for quick filtering
     - Gap detection via timestamps
 
 Configuration:
@@ -42,7 +38,7 @@ Usage:
     python convert_to_hdf5.py
 
 Output:
-    Creates imerg_data.h5 in the configured output directory.
+    Creates imerg_data.h5 in data/imerg_data_h5_clean/.
 """
 
 import os

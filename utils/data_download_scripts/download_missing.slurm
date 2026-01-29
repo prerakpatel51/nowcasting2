@@ -24,7 +24,7 @@
 #
 # Output:
 #   - Job logs: <PROJECT_ROOT>/logs/download_logs/imerg_missing_<jobid>.out
-#   - Downloaded files: <PROJECT_ROOT>/data/imerg_data/
+#   - Downloaded files: <PROJECT_ROOT>/data/imerg_data_tiff_clean/
 #
 # =============================================================================
 
