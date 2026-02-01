@@ -1,4 +1,4 @@
-"""Configuration for STEPS nowcasting."""
+"""Configuration for Lagrangian Persistence nowcasting."""
 
 from dataclasses import dataclass, field
 from typing import Optional
@@ -45,21 +45,16 @@ class DataConfig:
 
 
 @dataclass
-class STEPSConfig:
-    """STEPS algorithm configuration parameters."""
-
-    # Ensemble settings
-    n_ens_members: int = 20
-    n_cascade_levels: int = 6
+class LPConfig:
+    """Lagrangian Persistence algorithm configuration parameters."""
 
     # Precipitation thresholds
     precip_threshold: float = 0.1    # mm/h threshold for dB transform
-    precip_thr: float = -10.0        # dB threshold for STEPS
     zerovalue: float = -15.0         # dB value for no-rain
 
     # Spatial/temporal resolution (for IMERG 64x64 over Burkina Faso)
     kmperpixel: float = 13.5         # km per pixel (8° / 64 pixels)
-    timestep: int = 12               # Steps to Predict           
+    timestep: int = 12               # Steps to predict
 
 
 @dataclass
@@ -67,11 +62,11 @@ class Config:
     """Complete configuration combining all settings."""
 
     data: DataConfig = field(default_factory=DataConfig)
-    steps: STEPSConfig = field(default_factory=STEPSConfig)
+    lp: LPConfig = field(default_factory=LPConfig)
 
     @classmethod
     def from_dict(cls, config_dict: dict) -> "Config":
         """Create Config from a dictionary."""
         data_config = DataConfig(**config_dict.get("data", {}))
-        steps_config = STEPSConfig(**config_dict.get("steps", {}))
-        return cls(data=data_config, steps=steps_config)
+        lp_config = LPConfig(**config_dict.get("lp", {}))
+        return cls(data=data_config, lp=lp_config)

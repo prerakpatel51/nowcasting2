@@ -62,5 +62,7 @@ def steps(in_precip, timesteps, config=None):
         inverse=True
     )
 
-    # Return ensemble mean
-    return np.nanmean(R_forecast, axis=0)
+    # Return ensemble mean, replace NaN with 0
+    result = np.nanmean(R_forecast, axis=0)
+    result = np.nan_to_num(result, nan=0.0)
+    return result
