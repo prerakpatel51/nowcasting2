@@ -23,9 +23,10 @@ dm.setup()
 # Option 2: Custom configuration
 config = DataConfig(
     batch_size=16,
-    input_frames=4,
-    output_frames=8,
-    seq_length=12,
+    input_frames=12,
+    output_frames=12,
+    seq_length=24,
+    stride=6,  # More overlap between sequences
 )
 dm = PrecipitationDataModule(config=config)
 dm.setup()
@@ -39,9 +40,13 @@ trainer.fit(model, datamodule=dm)
 | Parameter | Default | Description |
 |-----------|---------|-------------|
 | `h5_path` | `data/imerg_data_h5_clean/imerg_data.h5` | Path to HDF5 file |
-| `seq_length` | 12 | Total frames per sequence |
-| `input_frames` | 6 | Number of input frames |
-| `output_frames` | 6 | Number of target frames |
+| `seq_length` | 24 | Total frames per sequence (input + output) |
+| `input_frames` | 12 | Number of input frames |
+| `output_frames` | 12 | Number of target frames |
+| `stride` | 12 | Step between consecutive sequences (1 = max overlap) |
+| `shuffle_train` | True | Shuffle training data |
+| `shuffle_val` | False | Don't shuffle validation (temporal evaluation) |
+| `shuffle_test` | False | Don't shuffle test (temporal evaluation) |
 | `train_ratio` | 0.70 | Training data fraction |
 | `val_ratio` | 0.15 | Validation data fraction |
 | `test_ratio` | 0.15 | Test data fraction |
@@ -82,8 +87,9 @@ forecast = steps(precip, timesteps=6)
 
 # Option 2: Custom configuration
 config = STEPSConfig(
-    n_ens_members=30,
+    n_ensemble=30,
     n_cascade_levels=8,
+    return_ensemble=False,  # Return mean instead of all members
 )
 forecast = steps(precip, timesteps=6, config=config)
 ```
@@ -92,20 +98,21 @@ forecast = steps(precip, timesteps=6, config=config)
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| `n_ens_members` | 20 | Number of ensemble members |
+| `n_ensemble` | 20 | Number of ensemble members to generate |
+| `return_ensemble` | True | True: return all members, False: return mean |
 | `n_cascade_levels` | 6 | Spatial scale decomposition levels |
-| `precip_threshold` | 0.1 | mm/h threshold for rain detection |
+| `precip_threshold` | 0.1 | mm/h threshold for dB transform |
 | `precip_thr` | -10.0 | dB threshold for STEPS internal use |
 | `zerovalue` | -15.0 | dB value for no-rain pixels |
 | `kmperpixel` | 13.5 | Spatial resolution (km per pixel) |
-| `timestep` | 30 | Time between frames (minutes) |
+| `timestep` | 12 | Number of frames to predict |
 
 ### Default Values Explanation
 
 The defaults are configured for IMERG data over Burkina Faso:
 
 - **kmperpixel = 13.5**: Calculated from 8 longitude / 64 pixels x 108 km/deg
-- **timestep = 30**: IMERG half-hourly temporal resolution
+- **timestep = 12**: Time between frames in minutes
 
 ## Combined Configuration
 
@@ -116,13 +123,13 @@ from nowcaster_models.steps import Config, DataConfig, STEPSConfig
 
 # Create combined config
 config = Config(
-    data=DataConfig(batch_size=64, num_workers=8),
-    steps=STEPSConfig(n_ens_members=30),
+    data=DataConfig(batch_size=64, num_workers=8, stride=6),
+    steps=STEPSConfig(n_ensemble=30, return_ensemble=True),
 )
 
 # Access settings
 print(config.data.batch_size)  # 64
-print(config.steps.n_ens_members)  # 30
+print(config.steps.n_ensemble)  # 30
 ```
 
 ## Input Requirements
@@ -133,9 +140,9 @@ print(config.steps.n_ens_members)  # 30
 
 ## Output
 
-- **Shape**: `(timesteps, H, W)`
+- **Shape**: `(n_ensemble, timesteps, H, W)` if `return_ensemble=True`, else `(timesteps, H, W)`
 - **Units**: mm/h
-- **Value**: Ensemble mean forecast
+- **Value**: All ensemble members if `return_ensemble=True`, otherwise ensemble mean forecast
 
 ## Key Concepts
 
