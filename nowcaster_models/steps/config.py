@@ -49,7 +49,10 @@ class STEPSConfig:
     """STEPS algorithm configuration parameters."""
 
     # Ensemble settings
-    n_ens_members: int = 20
+    n_ensemble: int = 20              # Number of ensemble members to generate
+    return_ensemble: bool = True    # True: return all members, False: return mean
+
+    # Cascade decomposition settings
     n_cascade_levels: int = 6
 
     # Precipitation thresholds
@@ -59,7 +62,7 @@ class STEPSConfig:
 
     # Spatial/temporal resolution (for IMERG 64x64 over Burkina Faso)
     kmperpixel: float = 13.5         # km per pixel (8° / 64 pixels)
-    timestep: int = 12               # Steps to Predict           
+    timestep: int = 12                          
 
 
 @dataclass
