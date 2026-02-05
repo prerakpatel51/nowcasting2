@@ -29,7 +29,7 @@ Usage:
 Output:
     Results saved to: nowcaster_results/forecast_results/{model}/{split}/
     - results.h5: HDF5 file containing 'predictions' and 'targets' datasets
-      - Mean mode: predictions (N, T, H, W), targets (N, T, H, W)
+      - Determinitic mode: predictions (N, T, H, W), targets (N, T, H, W)
       - Ensemble mode: predictions (N, E, T, H, W), targets (N, T, H, W)
         where E = number of ensemble members
     - failed_samples.txt: Log of any failed samples (if any)
@@ -59,7 +59,7 @@ def save_batch_to_h5(output_file: str, predictions: np.ndarray, targets: np.ndar
         Path to the HDF5 output file.
     predictions : np.ndarray
         Batch of predictions.
-        - Mean mode: (batch_size, T, H, W)
+        - Deterministic mode: (batch_size, T, H, W)
         - Ensemble mode: (batch_size, n_ensemble, T, H, W)
     targets : np.ndarray
         Batch of targets with shape (batch_size, T, H, W).
