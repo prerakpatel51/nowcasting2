@@ -29,7 +29,7 @@ from numba.typed import Dict
 import numpy as np
 from torch.utils.data import Dataset, IterableDataset
 
-from .patches import unpack_patches
+from ..io.patches import unpack_patches
 from .sampling import EqualFrequencySampler
 
 

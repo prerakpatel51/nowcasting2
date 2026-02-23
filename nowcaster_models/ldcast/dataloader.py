@@ -10,9 +10,9 @@ from datetime import timedelta
 import numpy as np
 from omegaconf import OmegaConf
 
-from . import patches
-from . import split
-from . import transform
+from .io import patches
+from .processing import split
+from .processing import transform
 
 
 def setup_data(config):

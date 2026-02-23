@@ -26,7 +26,7 @@ import dask
 from numba import njit, prange, types
 from numba.typed import Dict
 import numpy as np
-from .patches import unpack_patches
+from ..io.patches import unpack_patches
 
 
 class EqualFrequencySampler:

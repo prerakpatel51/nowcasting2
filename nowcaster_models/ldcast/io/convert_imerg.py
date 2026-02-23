@@ -17,7 +17,7 @@ import h5py
 import numpy as np
 from omegaconf import OmegaConf
 
-from patches import save_patches
+from .patches import save_patches
 
 
 def convert_imerg(config):
