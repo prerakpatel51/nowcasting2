@@ -1,0 +1,51 @@
+data:
+  h5_path: /home1/ppatel2025/nowcasting2/data/imerg_data_h5_clean/imerg_data.h5
+  patch_dir: /home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/data/IMERG
+  cache_dir: /home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/cache
+  var_name: IMERG
+
+patches:
+  patch_size: 32
+  image_size: 64
+  stride: 1
+  min_nonzeros: 5
+  nonzero_threshold: 0.1
+
+pipeline:
+  input_timesteps: 16
+  output_timesteps: 12
+  interval_minutes: 30
+  sample_shape: [2, 2]
+
+split:
+  chunk_days: 2
+  valid_frac: 0.1
+  test_frac: 0.1
+  random_seed: 42
+
+sampling:
+  bins_low: 0.1
+  bins_high: 20.0
+  num_bins: 10
+  batch_size: 8
+
+transform:
+  log: true
+  threshold: 0.1
+  fill_value: 0.01
+  mean: -0.1399
+  std: 0.4151
+
+model:
+  embed_dim: 64              # AFNO embedding dimension
+  analysis_depth: 4           # Number of AFNOBlock3d layers in analysis stage
+  forecast_depth: 4           # Number of AFNOBlock3d layers in forecast stage
+  cascade_depth: 4            # Number of multi-scale cascade levels (64ch, 128ch, 256ch, 256ch)
+  model_channels: 64        # UNet base channel count
+  channel_mult: [1, 2, 4, 4]  # UNet channel multipliers per level (64→128→256→256)
+  attention_resolutions: [1, 2, 4]  # UNet levels where AFNOCrossAttention is applied
+  num_heads: 8                # Number of attention heads in AFNO blocks
+  num_res_blocks: 2           # Residual blocks per UNet level
+  lr: 1e-4                    # Learning rate
+  lr_warmup: 500              # Linear warmup steps
+  model_dir: /home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints_smallest_model

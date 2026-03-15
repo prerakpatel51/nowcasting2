@@ -1,0 +1,443 @@
+ Now I have a thorough understanding of both codebases. Here is the complete
+  comparison:
+
+  ---
+  Differences Between Your Code and the Paper Code
+
+  1. AUTOENCODER: VAE vs Identity (Major)
+
+  ┌────────────────┬─────────────────────────────┬────────────────────────────────┐
+  │                │       Paper (ldcast)        │      Yours (nowcasting2)       │
+  ├────────────────┼─────────────────────────────┼────────────────────────────────┤
+  │ Class          │ AutoencoderKL (full VAE)    │ IdentityAutoencoder (no-op)    │
+  ├────────────────┼─────────────────────────────┼────────────────────────────────┤
+  │ hidden_width   │ 32 channels                 │ 1 channel                      │
+  ├────────────────┼─────────────────────────────┼────────────────────────────────┤
+  │ Encoding       │ 2-level 3D ConvNet → μ/σ →  │ return (x, None) —             │
+  │                │ reparameterize              │ pass-through                   │
+  ├────────────────┼─────────────────────────────┼────────────────────────────────┤
+  │ Spatial        │ 4× downsample (128×128 →    │ None — data stays at 64×64     │
+  │ compression    │ 32×32)                      │                                │
+  ├────────────────┼─────────────────────────────┼────────────────────────────────┤
+  │ Temporal       │ 4× downsample along time    │ None                           │
+  │ compression    │                             │                                │
+  ├────────────────┼─────────────────────────────┼────────────────────────────────┤
+  │ Training       │ Separate Stage 0 with L1 +  │ Not needed                     │
+  │                │ KL loss                     │                                │
+  ├────────────────┼─────────────────────────────┼────────────────────────────────┤
+  │ Effect on      │ Diffusion operates in       │ Diffusion operates directly in │
+  │ diffusion      │ compressed 32-channel       │  pixel space (1 channel)       │
+  │                │ latent space                │                                │
+  └────────────────┴─────────────────────────────┴────────────────────────────────┘
+
+  This is the biggest architectural change. The paper is a true "latent diffusion"
+  model; yours is effectively a pixel-space diffusion model.
+
+  ---
+  2. DATA: Radar vs IMERG Satellite
+
+  ┌────────────────────┬───────────────────────────┬───────────────────────────────┐
+  │                    │           Paper           │             Yours             │
+  ├────────────────────┼───────────────────────────┼───────────────────────────────┤
+  │ Source             │ Ground-based radar (RZC)  │ IMERG satellite precipitation │
+  ├────────────────────┼───────────────────────────┼───────────────────────────────┤
+  │ Spatial resolution │ 128×128 or 256×256 pixels │ 64×64 pixels                  │
+  ├────────────────────┼───────────────────────────┼───────────────────────────────┤
+  │ Channels           │ 1 (rain rate)             │ 1 (precipitation rate)        │
+  ├────────────────────┼───────────────────────────┼───────────────────────────────┤
+  │ Normalization mean │ -0.051                    │ -0.1399                       │
+  ├────────────────────┼───────────────────────────┼───────────────────────────────┤
+  │ Normalization std  │ 0.528                     │ 0.4151                        │
+  ├────────────────────┼───────────────────────────┼───────────────────────────────┤
+  │ Threshold          │ (in lookup table)         │ 0.1 mm/hr                     │
+  ├────────────────────┼───────────────────────────┼───────────────────────────────┤
+  │ Fill value         │ (in lookup table)         │ 0.01 mm/hr                    │
+  └────────────────────┴───────────────────────────┴───────────────────────────────┘
+
+  ---
+  3. TEMPORAL CONFIGURATION
+
+  ┌──────────────┬──────────────────────────────────────────────┬────────────────┐
+  │              │                    Paper                     │     Yours      │
+  ├──────────────┼──────────────────────────────────────────────┼────────────────┤
+  │ Input        │ Configurable (e.g., input_patches=1 after    │ 16 raw         │
+  │ timesteps    │ VAE compresses ~4 raw steps into 1)          │ timesteps      │
+  ├──────────────┼──────────────────────────────────────────────┼────────────────┤
+  │ Output       │ output_patches=2 (VAE compressed)            │ 12 raw         │
+  │ timesteps    │                                              │ timesteps      │
+  ├──────────────┼──────────────────────────────────────────────┼────────────────┤
+  │ Temporal     │ 5 min                                        │ 30 min         │
+  │ interval     │                                              │                │
+  ├──────────────┼──────────────────────────────────────────────┼────────────────┤
+  │ Input        │ ~20 min (4 steps × 5min)                     │ 8 hours (16 ×  │
+  │ horizon      │                                              │ 30min)         │
+  ├──────────────┼──────────────────────────────────────────────┼────────────────┤
+  │ Output       │ ~40 min (8 steps × 5min)                     │ 6 hours (12 ×  │
+  │ horizon      │                                              │ 30min)         │
+  └──────────────┴──────────────────────────────────────────────┴────────────────┘
+
+  ---
+  4. UNET ARCHITECTURE
+
+  ┌────────────────────────────┬─────────────────────────┬──────────────────────┐
+  │                            │          Paper          │        Yours         │
+  ├────────────────────────────┼─────────────────────────┼──────────────────────┤
+  │ model_channels             │ 128                     │ 256                  │
+  ├────────────────────────────┼─────────────────────────┼──────────────────────┤
+  │ in_channels / out_channels │ 32 (VAE latent)         │ 1 (raw pixel)        │
+  ├────────────────────────────┼─────────────────────────┼──────────────────────┤
+  │ channel_mult               │ (1, 2, 4, 4) → 4 levels │ [1, 2, 4] → 3 levels │
+  ├────────────────────────────┼─────────────────────────┼──────────────────────┤
+  │ Channel progression        │ Now I have a thorough understanding of both codebases. Here is the complete
+  comparison:
+
+  ---
+  Differences Between Your Code and the Paper Code
+
+  1. AUTOENCODER: VAE vs Identity (Major)
+
+  ┌────────────────┬─────────────────────────────┬────────────────────────────────┐
+  │                │       Paper (ldcast)        │      Yours (nowcasting2)       │
+  ├────────────────┼─────────────────────────────┼────────────────────────────────┤
+  │ Class          │ AutoencoderKL (full VAE)    │ IdentityAutoencoder (no-op)    │
+  ├────────────────┼─────────────────────────────┼────────────────────────────────┤
+  │ hidden_width   │ 32 channels                 │ 1 channel                      │
+  ├────────────────┼─────────────────────────────┼────────────────────────────────┤
+  │ Encoding       │ 2-level 3D ConvNet → μ/σ →  │ return (x, None) —             │
+  │                │ reparameterize              │ pass-through                   │
+  ├────────────────┼─────────────────────────────┼────────────────────────────────┤
+  │ Spatial        │ 4× downsample (128×128 →    │ None — data stays at 64×64     │
+  │ compression    │ 32×32)                      │                                │
+  ├────────────────┼─────────────────────────────┼────────────────────────────────┤
+  │ Temporal       │ 4× downsample along time    │ None                           │
+  │ compression    │                             │                                │
+  ├────────────────┼─────────────────────────────┼────────────────────────────────┤
+  │ Training       │ Separate Stage 0 with L1 +  │ Not needed                     │
+  │                │ KL loss                     │                                │
+  ├────────────────┼─────────────────────────────┼────────────────────────────────┤
+  │ Effect on      │ Diffusion operates in       │ Diffusion operates directly in │
+  │ diffusion      │ compressed 32-channel       │  pixel space (1 channel)       │
+  │                │ latent space                │                                │
+  └────────────────┴─────────────────────────────┴────────────────────────────────┘
+
+  This is the biggest architectural change. The paper is a true "latent diffusion"
+  model; yours is effectively a pixel-space diffusion model.
+
+  ---
+  2. DATA: Radar vs IMERG Satellite
+
+  ┌────────────────────┬───────────────────────────┬───────────────────────────────┐
+  │                    │           Paper           │             Yours             │
+  ├────────────────────┼───────────────────────────┼───────────────────────────────┤
+  │ Source             │ Ground-based radar (RZC)  │ IMERG satellite precipitation │
+  ├────────────────────┼───────────────────────────┼───────────────────────────────┤
+  │ Spatial resolution │ 128×128 or 256×256 pixels │ 64×64 pixels                  │
+  ├────────────────────┼───────────────────────────┼───────────────────────────────┤
+  │ Channels           │ 1 (rain rate)             │ 1 (precipitation rate)        │
+  ├────────────────────┼───────────────────────────┼───────────────────────────────┤
+  │ Normalization mean │ -0.051                    │ -0.1399                       │
+  ├────────────────────┼───────────────────────────┼───────────────────────────────┤
+  │ Normalization std  │ 0.528                     │ 0.4151                        │
+  ├────────────────────┼───────────────────────────┼───────────────────────────────┤
+  │ Threshold          │ (in lookup table)         │ 0.1 mm/hr                     │
+  ├────────────────────┼───────────────────────────┼───────────────────────────────┤
+  │ Fill value         │ (in lookup table)         │ 0.01 mm/hr                    │
+  └────────────────────┴───────────────────────────┴───────────────────────────────┘
+
+  ---
+  3. TEMPORAL CONFIGURATION
+
+  ┌──────────────┬──────────────────────────────────────────────┬────────────────┐
+  │              │                    Paper                     │     Yours      │
+  ├──────────────┼──────────────────────────────────────────────┼────────────────┤
+  │ Input        │ Configurable (e.g., input_patches=1 after    │ 16 raw         │
+  │ timesteps    │ VAE compresses ~4 raw steps into 1)          │ timesteps      │
+  ├──────────────┼──────────────────────────────────────────────┼────────────────┤
+  │ Output       │ output_patches=2 (VAE compressed)            │ 12 raw         │
+  │ timesteps    │                                              │ timesteps      │
+  ├──────────────┼──────────────────────────────────────────────┼────────────────┤
+  │ Temporal     │ 5 min                                        │ 30 min         │
+  │ interval     │                                              │                │
+  ├──────────────┼──────────────────────────────────────────────┼────────────────┤
+  │ Input        │ ~20 min (4 steps × 5min)                     │ 8 hours (16 ×  │
+  │ horizon      │                                              │ 30min)         │
+  ├──────────────┼──────────────────────────────────────────────┼────────────────┤
+  │ Output       │ ~40 min (8 steps × 5min)                     │ 6 hours (12 ×  │
+  │ horizon      │                                              │ 30min)         │
+  └──────────────┴──────────────────────────────────────────────┴────────────────┘
+
+  ---
+  4. UNET ARCHITECTURE
+
+  ┌────────────────────────────┬─────────────────────────┬──────────────────────┐
+  │                            │          version 1      │        version 2   │
+  ├────────────────────────────┼─────────────────────────┼──────────────────────┤
+  │ model_channels             │ 128                     │ 256                  │
+  ├────────────────────────────┼─────────────────────────┼──────────────────────┤
+  │ in_channels / out_channels │ 32 (VAE latent)         │ 1 (raw pixel)        │
+  ├────────────────────────────┼─────────────────────────┼──────────────────────┤
+  │ channel_mult               │ (1, 2, 4, 4) → 4 levels │ [1, 2, 4] → 3 levels │
+  ├────────────────────────────┼─────────────────────────┼──────────────────────┤
+  │ Channel progression        │ 128 → 256 → 512 → 512   │ 256 → 512 → 1024     │
+  ├────────────────────────────┼─────────────────────────┼──────────────────────┤
+  │ attention_resolutions      │ (1, 2, 4)               │ [1, 2]               │
+  ├────────────────────────────┼─────────────────────────┼──────────────────────┤
+  │ Deepest resolution         │ Input/8 (e.g., 32→4)    │ Input/4 (64→16)      │
+  └────────────────────────────┴─────────────────────────┴──────────────────────┘
+
+  Your UNet has fewer levels but wider channels — it's a wider/shallower UNet.
+
+  ---
+  5. CASCADE (CONDITIONING) DEPTH
+
+  ┌──────────────────────────┬────────────────────────────┬───────────────────────┐
+  │                          │           Paper            │         Yours         │
+  ├──────────────────────────┼────────────────────────────┼───────────────────────┤
+  │ cascade_depth            │ 4 (default in analysis.py) │ 3                     │
+  ├──────────────────────────┼────────────────────────────┼───────────────────────┤
+  │ Cascade channel          │ 128 → 256 → 512 → 1024     │ 128 → 256 → 512       │
+  │ progression              │                            │                       │
+  ├──────────────────────────┼────────────────────────────┼───────────────────────┤
+  │ context_channels         │ [128, 256, 512, 1024] (4   │ [128, 256, 512] (3    │
+  │                          │ levels)                    │ levels)               │
+  └──────────────────────────┴────────────────────────────┴───────────────────────┘
+
+  Your cascade has one fewer level, matching the 3-level UNet.
+
+  ---
+  6. TRAINING SETUP
+
+  ┌────────────────┬───────────────────────────┬──────────────────────────────────┐
+  │                │           Paper           │              Yours               │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ LR warmup      │ 0 (none)                  │ 500 steps                        │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Early stopping │ 6 epochs                  │ 20 epochs                        │
+  │  patience      │                           │                                  │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Checkpoint     │ Save top-3 by             │ Save best + every epoch (keep    │
+  │ strategy       │ val_loss_ema              │ all) + last.ckpt                 │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Multi-GPU      │ 'dp' (DataParallel)       │ 'ddp' (DistributedDataParallel)  │
+  │ strategy       │                           │                                  │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Multi-node     │ Not supported             │ Supports SLURM multi-node        │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Precision      │ Default (commented out    │ "32-true" (explicit FP32)        │
+  │                │ precision=16)             │                                  │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Batch size     │ 24                        │ 4                                │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Logger         │ None                      │ CSVLogger added                  │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Training       │ 3 separate stages (VAE →  │ Diffusion only (no VAE stage)    │
+  │ stages         │ Nowcaster → Diffusion)    │                                  │
+  └────────────────┴───────────────────────────┴──────────────────────────────────┘
+
+  ---
+  7. DATA PIPELINE
+
+  ┌────────────────┬────────────────────────────────┬─────────────────────────────┐
+  │                │             Paper              │            Yours            │
+  ├────────────────┼────────────────────────────────┼─────────────────────────────┤
+  │ Patch storage  │ NetCDF4 with custom indexing   │ HDF5 → NetCDF conversion    │
+  │ format         │                                │ pipeline                    │
+  ├────────────────┼────────────────────────────────┼─────────────────────────────┤
+  │ Patch assembly │ 8×8 grid (for 256×256) or      │ 2×2 grid (for 64×64)        │
+  │                │ default                        │                             │
+  ├────────────────┼────────────────────────────────┼─────────────────────────────┤
+  │ Sampler        │ Paper's custom                 │ Adapted                     │
+  │                │ EqualFrequencySampler          │ EqualFrequencySampler       │
+  ├────────────────┼────────────────────────────────┼─────────────────────────────┤
+  │ Split method   │ Paper's temporal chunking      │ Same temporal chunking      │
+  │                │                                │ (chunk_days=2)              │
+  ├────────────────┼────────────────────────────────┼─────────────────────────────┤
+  │ Augmentation   │ Transpose, FlipUD, FlipLR +    │ Same augmentations, no      │
+  │                │ Gaussian antialiasing          │ antialiasing                │
+  ├────────────────┼────────────────────────────────┼─────────────────────────────┤
+  │ Data loading   │ Paper's custom batch generator │ Adapted with Dask-based     │
+  │                │                                │ parallel loading            │
+  └────────────────┴────────────────────────────────┴─────────────────────────────┘
+
+  ---
+  8. FILES YOU DON'T HAVE (from paper)
+
+  ┌─────────────────────────────┬──────────────────────────┬──────────────────────┐
+  │         Paper file          │         Purpose          │   Your equivalent    │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ models/autoenc/encoder.py   │ SimpleConvEncoder/Decode │ Not needed (Identity │
+  │                             │ r for VAE                │ Autoencoder)         │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ models/autoenc/training.py  │ VAE training loop        │ Not needed           │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ models/benchmarks/dgmr.py   │ DGMR benchmark           │ Not included         │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ models/benchmarks/pysteps.p │ PySTEPS benchmark        │ Not included         │
+  │ y                           │                          │                      │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ analysis/confmatrix.py      │ Confusion matrix         │ Not included         │
+  │                             │ evaluation               │                      │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ analysis/fss.py             │ Fractions Skill Score    │ Not included         │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ analysis/rank.py            │ Rank histogram           │ Not included         │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ analysis/histogram.py       │ Histogram analysis       │ Not included         │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ analysis/crps.py            │ CRPS evaluation          │ Not included         │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ visualization/              │ Plotting utilities       │ Not included         │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ features/io.py,             │ Data I/O utilities       │ Custom replacements  │
+  │ features/utils.py           │                          │                      │
+  └─────────────────────────────┴──────────────────────────┴──────────────────────┘
+
+  ---
+  9. SUMMARY OF KEY IMPACT
+
+  1. No latent compression — Your diffusion model works in pixel space (1 channel,
+  64×64) rather than latent space (32 channels, 32×32). This means:
+    - No separate VAE training stage needed
+    - But the diffusion model must learn directly in pixel space
+    - The UNet processes 1-channel input instead of 32-channel input
+  2. Wider but shallower UNet — 256 base channels (vs 128) but 3 levels (vs 4). This
+  partially compensates for operating in pixel space by giving more capacity per
+  level.
+  3. Much longer temporal context — 16×30min = 8hr input, 12×30min = 6hr output (vs
+  ~20min input, ~40min output). The temporal transformer must handle many more time
+  steps.
+  4. Smaller spatial extent — 64×64 (vs 128×128 or 256×256), so the 3D convolutions
+  and FFTs are computationally cheaper per frame.
+  5. Training robustness — More patience (20 vs 6), warmup (500 steps), DDP instead of
+   DP, and explicit FP32 precision.   │ 256 → 512 → 1024     │
+  ├────────────────────────────┼─────────────────────────┼──────────────────────┤
+  │ attention_resolutions      │ (1, 2, 4)               │ [1, 2]               │
+  ├────────────────────────────┼─────────────────────────┼──────────────────────┤
+  │ Deepest resolution         │ Input/8 (e.g., 32→4)    │ Input/4 (64→16)      │
+  └────────────────────────────┴─────────────────────────┴──────────────────────┘
+
+  Your UNet has fewer levels but wider channels — it's a wider/shallower UNet.
+
+  ---
+  5. CASCADE (CONDITIONING) DEPTH
+
+  ┌──────────────────────────┬────────────────────────────┬───────────────────────┐
+  │                          │           Paper            │         Yours         │
+  ├──────────────────────────┼────────────────────────────┼───────────────────────┤
+  │ cascade_depth            │ 4 (default in analysis.py) │ 3                     │
+  ├──────────────────────────┼────────────────────────────┼───────────────────────┤
+  │ Cascade channel          │ 128 → 256 → 512 → 1024     │ 128 → 256 → 512       │
+  │ progression              │                            │                       │
+  ├──────────────────────────┼────────────────────────────┼───────────────────────┤
+  │ context_channels         │ [128, 256, 512, 1024] (4   │ [128, 256, 512] (3    │
+  │                          │ levels)                    │ levels)               │
+  └──────────────────────────┴────────────────────────────┴───────────────────────┘
+
+  Your cascade has one fewer level, matching the 3-level UNet.
+
+  ---
+  6. TRAINING SETUP
+
+  ┌────────────────┬───────────────────────────┬──────────────────────────────────┐
+  │                │           Paper           │              Yours               │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ LR warmup      │ 0 (none)                  │ 500 steps                        │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Early stopping │ 6 epochs                  │ 20 epochs                        │
+  │  patience      │                           │                                  │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Checkpoint     │ Save top-3 by             │ Save best + every epoch (keep    │
+  │ strategy       │ val_loss_ema              │ all) + last.ckpt                 │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Multi-GPU      │ 'dp' (DataParallel)       │ 'ddp' (DistributedDataParallel)  │
+  │ strategy       │                           │                                  │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Multi-node     │ Not supported             │ Supports SLURM multi-node        │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Precision      │ Default (commented out    │ "32-true" (explicit FP32)        │
+  │                │ precision=16)             │                                  │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Batch size     │ 24                        │ 4                                │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Logger         │ None                      │ CSVLogger added                  │
+  ├────────────────┼───────────────────────────┼──────────────────────────────────┤
+  │ Training       │ 3 separate stages (VAE →  │ Diffusion only (no VAE stage)    │
+  │ stages         │ Nowcaster → Diffusion)    │                                  │
+  └────────────────┴───────────────────────────┴──────────────────────────────────┘
+
+  ---
+  7. DATA PIPELINE
+
+  ┌────────────────┬────────────────────────────────┬─────────────────────────────┐
+  │                │             Paper              │            Yours            │
+  ├────────────────┼────────────────────────────────┼─────────────────────────────┤
+  │ Patch storage  │ NetCDF4 with custom indexing   │ HDF5 → NetCDF conversion    │
+  │ format         │                                │ pipeline                    │
+  ├────────────────┼────────────────────────────────┼─────────────────────────────┤
+  │ Patch assembly │ 8×8 grid (for 256×256) or      │ 2×2 grid (for 64×64)        │
+  │                │ default                        │                             │
+  ├────────────────┼────────────────────────────────┼─────────────────────────────┤
+  │ Sampler        │ Paper's custom                 │ Adapted                     │
+  │                │ EqualFrequencySampler          │ EqualFrequencySampler       │
+  ├────────────────┼────────────────────────────────┼─────────────────────────────┤
+  │ Split method   │ Paper's temporal chunking      │ Same temporal chunking      │
+  │                │                                │ (chunk_days=2)              │
+  ├────────────────┼────────────────────────────────┼─────────────────────────────┤
+  │ Augmentation   │ Transpose, FlipUD, FlipLR +    │ Same augmentations, no      │
+  │                │ Gaussian antialiasing          │ antialiasing                │
+  ├────────────────┼────────────────────────────────┼─────────────────────────────┤
+  │ Data loading   │ Paper's custom batch generator │ Adapted with Dask-based     │
+  │                │                                │ parallel loading            │
+  └────────────────┴────────────────────────────────┴─────────────────────────────┘
+
+  ---
+  8. FILES YOU DON'T HAVE (from paper)
+
+  ┌─────────────────────────────┬──────────────────────────┬──────────────────────┐
+  │         Paper file          │         Purpose          │   Your equivalent    │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ models/autoenc/encoder.py   │ SimpleConvEncoder/Decode │ Not needed (Identity │
+  │                             │ r for VAE                │ Autoencoder)         │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ models/autoenc/training.py  │ VAE training loop        │ Not needed           │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ models/benchmarks/dgmr.py   │ DGMR benchmark           │ Not included         │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ models/benchmarks/pysteps.p │ PySTEPS benchmark        │ Not included         │
+  │ y                           │                          │                      │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ analysis/confmatrix.py      │ Confusion matrix         │ Not included         │
+  │                             │ evaluation               │                      │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ analysis/fss.py             │ Fractions Skill Score    │ Not included         │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ analysis/rank.py            │ Rank histogram           │ Not included         │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ analysis/histogram.py       │ Histogram analysis       │ Not included         │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ analysis/crps.py            │ CRPS evaluation          │ Not included         │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ visualization/              │ Plotting utilities       │ Not included         │
+  ├─────────────────────────────┼──────────────────────────┼──────────────────────┤
+  │ features/io.py,             │ Data I/O utilities       │ Custom replacements  │
+  │ features/utils.py           │                          │                      │
+  └─────────────────────────────┴──────────────────────────┴──────────────────────┘
+
+  ---
+  9. SUMMARY OF KEY IMPACT
+
+  1. No latent compression — Your diffusion model works in pixel space (1 channel,
+  64×64) rather than latent space (32 channels, 32×32). This means:
+    - No separate VAE training stage needed
+    - But the diffusion model must learn directly in pixel space
+    - The UNet processes 1-channel input instead of 32-channel input
+  2. Wider but shallower UNet — 256 base channels (vs 128) but 3 levels (vs 4). This
+  partially compensates for operating in pixel space by giving more capacity per
+  level.
+  3. Much longer temporal context — 16×30min = 8hr input, 12×30min = 6hr output (vs
+  ~20min input, ~40min output). The temporal transformer must handle many more time
+  steps.
+  4. Smaller spatial extent — 64×64 (vs 128×128 or 256×256), so the 3D convolutions
+  and FFTs are computationally cheaper per frame.
+  5. Training robustness — More patience (20 vs 6), warmup (500 steps), DDP instead of
+   DP, and explicit FP32 precision.

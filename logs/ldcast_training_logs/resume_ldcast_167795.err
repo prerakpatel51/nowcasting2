@@ -1,0 +1,1420 @@
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA H200') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/8
+Initializing distributed: GLOBAL_RANK: 6, MEMBER: 7/8
+Initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/8
+Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/8
+Initializing distributed: GLOBAL_RANK: 4, MEMBER: 5/8
+Initializing distributed: GLOBAL_RANK: 5, MEMBER: 6/8
+Initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/8
+Initializing distributed: GLOBAL_RANK: 7, MEMBER: 8/8
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 8 processes
+----------------------------------------------------------------------------------------------------
+
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:654: Checkpoint directory /home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints_larger_model exists and is not empty.
+Restoring states from the checkpoint path at /home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints_larger_model/last.ckpt
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:362: The dirpath has changed from '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints' to '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints_larger_model', therefore `best_model_score`, `kth_best_model_path`, `kth_value`, `last_model_path` and `best_k_models` won't be reloaded. Only `best_model_path` will be reloaded.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:362: The dirpath has changed from '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints' to '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints_larger_model', therefore `best_model_score`, `kth_best_model_path`, `kth_value`, `last_model_path` and `best_k_models` won't be reloaded. Only `best_model_path` will be reloaded.
+LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:362: The dirpath has changed from '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints' to '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints_larger_model', therefore `best_model_score`, `kth_best_model_path`, `kth_value`, `last_model_path` and `best_k_models` won't be reloaded. Only `best_model_path` will be reloaded.
+LOCAL_RANK: 4 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:362: The dirpath has changed from '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints' to '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints_larger_model', therefore `best_model_score`, `kth_best_model_path`, `kth_value`, `last_model_path` and `best_k_models` won't be reloaded. Only `best_model_path` will be reloaded.
+LOCAL_RANK: 6 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:362: The dirpath has changed from '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints' to '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints_larger_model', therefore `best_model_score`, `kth_best_model_path`, `kth_value`, `last_model_path` and `best_k_models` won't be reloaded. Only `best_model_path` will be reloaded.
+LOCAL_RANK: 5 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:362: The dirpath has changed from '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints' to '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints_larger_model', therefore `best_model_score`, `kth_best_model_path`, `kth_value`, `last_model_path` and `best_k_models` won't be reloaded. Only `best_model_path` will be reloaded.
+LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:362: The dirpath has changed from '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints' to '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints_larger_model', therefore `best_model_score`, `kth_best_model_path`, `kth_value`, `last_model_path` and `best_k_models` won't be reloaded. Only `best_model_path` will be reloaded.
+LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:362: The dirpath has changed from '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints' to '/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints_larger_model', therefore `best_model_score`, `kth_best_model_path`, `kth_value`, `last_model_path` and `best_k_models` won't be reloaded. Only `best_model_path` will be reloaded.
+LOCAL_RANK: 7 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/lr_scheduler.py:62: UserWarning: The verbose parameter is deprecated. Please use get_last_lr() to access the learning rate.
+  warnings.warn(
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/lr_scheduler.py:62: UserWarning: The verbose parameter is deprecated. Please use get_last_lr() to access the learning rate.
+  warnings.warn(
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/lr_scheduler.py:62: UserWarning: The verbose parameter is deprecated. Please use get_last_lr() to access the learning rate.
+  warnings.warn(
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/lr_scheduler.py:62: UserWarning: The verbose parameter is deprecated. Please use get_last_lr() to access the learning rate.
+  warnings.warn(
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/lr_scheduler.py:62: UserWarning: The verbose parameter is deprecated. Please use get_last_lr() to access the learning rate.
+  warnings.warn(
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/lr_scheduler.py:62: UserWarning: The verbose parameter is deprecated. Please use get_last_lr() to access the learning rate.
+  warnings.warn(
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/lr_scheduler.py:62: UserWarning: The verbose parameter is deprecated. Please use get_last_lr() to access the learning rate.
+  warnings.warn(
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/lr_scheduler.py:62: UserWarning: The verbose parameter is deprecated. Please use get_last_lr() to access the learning rate.
+  warnings.warn(
+
+  | Name            | Type                  | Params | Mode 
+------------------------------------------------------------------
+0 | model           | UNetModel             | 664 M  | train
+1 | autoencoder     | IdentityAutoencoder   | 0      | train
+2 | context_encoder | AFNONowcastNetCascade | 6.0 M  | train
+3 | model_ema       | LitEma                | 0      | train
+------------------------------------------------------------------
+670 M     Trainable params
+0         Non-trainable params
+670 M     Total params
+2,682.101 Total estimated model params size (MB)
+524       Modules in train mode
+0         Modules in eval mode
+Restored all states from the checkpoint at /home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints_larger_model/last.ckpt
+SLURM auto-requeueing enabled. Setting signal handlers.
+SLURM auto-requeueing enabled. Setting signal handlers.
+SLURM auto-requeueing enabled. Setting signal handlers.
+SLURM auto-requeueing enabled. Setting signal handlers.
+SLURM auto-requeueing enabled. Setting signal handlers.
+SLURM auto-requeueing enabled. Setting signal handlers.
+SLURM auto-requeueing enabled. Setting signal handlers.
+SLURM auto-requeueing enabled. Setting signal handlers.
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:424: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=10` in the `DataLoader` to improve performance.
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:424: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=10` in the `DataLoader` to improve performance.
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/autograd/graph.py:825: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 512, 512, 512]
+bucket_view.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 1, 1, 1] (Triggered internally at ../torch/csrc/distributed/c10d/reducer.cpp:327.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/autograd/graph.py:825: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 512, 512, 512]
+bucket_view.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 1, 1, 1] (Triggered internally at ../torch/csrc/distributed/c10d/reducer.cpp:327.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/autograd/graph.py:825: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 512, 512, 512]
+bucket_view.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 1, 1, 1] (Triggered internally at ../torch/csrc/distributed/c10d/reducer.cpp:327.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/autograd/graph.py:825: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 512, 512, 512]
+bucket_view.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 1, 1, 1] (Triggered internally at ../torch/csrc/distributed/c10d/reducer.cpp:327.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/autograd/graph.py:825: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 512, 512, 512]
+bucket_view.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 1, 1, 1] (Triggered internally at ../torch/csrc/distributed/c10d/reducer.cpp:327.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/autograd/graph.py:825: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 512, 512, 512]
+bucket_view.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 1, 1, 1] (Triggered internally at ../torch/csrc/distributed/c10d/reducer.cpp:327.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/autograd/graph.py:825: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 512, 512, 512]
+bucket_view.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 1, 1, 1] (Triggered internally at ../torch/csrc/distributed/c10d/reducer.cpp:327.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/autograd/graph.py:825: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 512, 512, 512]
+bucket_view.sizes() = [256, 512, 1, 1, 1], strides() = [512, 1, 1, 1, 1] (Triggered internally at ../torch/csrc/distributed/c10d/reducer.cpp:327.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[rank4]: Traceback (most recent call last):
+[rank4]:   File "<frozen runpy>", line 198, in _run_module_as_main
+[rank4]:   File "<frozen runpy>", line 88, in _run_code
+[rank4]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 135, in <module>
+[rank4]:     main()
+[rank4]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 131, in main
+[rank4]:     trainer.fit(ldm, datamodule=datamodule, ckpt_path=args.resume)
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 538, in fit
+[rank4]:     call._call_and_handle_interrupt(
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 46, in _call_and_handle_interrupt
+[rank4]:     return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 105, in launch
+[rank4]:     return function(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 574, in _fit_impl
+[rank4]:     self._run(model, ckpt_path=ckpt_path)
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 981, in _run
+[rank4]:     results = self._run_stage()
+[rank4]:               ^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1025, in _run_stage
+[rank4]:     self.fit_loop.run()
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 205, in run
+[rank4]:     self.advance()
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 363, in advance
+[rank4]:     self.epoch_loop.run(self._data_fetcher)
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 140, in run
+[rank4]:     self.advance(data_fetcher)
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 250, in advance
+[rank4]:     batch_output = self.automatic_optimization.run(trainer.optimizers[0], batch_idx, kwargs)
+[rank4]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 190, in run
+[rank4]:     self._optimizer_step(batch_idx, closure)
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 268, in _optimizer_step
+[rank4]:     call._call_lightning_module_hook(
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 167, in _call_lightning_module_hook
+[rank4]:     output = fn(*args, **kwargs)
+[rank4]:              ^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 216, in optimizer_step
+[rank4]:     super().optimizer_step(
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/module.py", line 1306, in optimizer_step
+[rank4]:     optimizer.step(closure=optimizer_closure)
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 153, in step
+[rank4]:     step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+[rank4]:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/ddp.py", line 270, in optimizer_step
+[rank4]:     optimizer_output = super().optimizer_step(optimizer, closure, model, **kwargs)
+[rank4]:                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 238, in optimizer_step
+[rank4]:     return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 122, in optimizer_step
+[rank4]:     return optimizer.step(closure=closure, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 487, in wrapper
+[rank4]:     out = func(*args, **kwargs)
+[rank4]:           ^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 91, in _use_grad
+[rank4]:     ret = func(self, *args, **kwargs)
+[rank4]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/adamw.py", line 197, in step
+[rank4]:     loss = closure()
+[rank4]:            ^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 108, in _wrap_closure
+[rank4]:     closure_result = closure()
+[rank4]:                      ^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 144, in __call__
+[rank4]:     self._result = self.closure(*args, **kwargs)
+[rank4]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank4]:     return func(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 129, in closure
+[rank4]:     step_output = self._step_fn()
+[rank4]:                   ^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 317, in _training_step
+[rank4]:     training_step_output = call._call_strategy_hook(trainer, "training_step", *kwargs.values())
+[rank4]:                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 319, in _call_strategy_hook
+[rank4]:     output = fn(*args, **kwargs)
+[rank4]:              ^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 389, in training_step
+[rank4]:     return self._forward_redirection(self.model, self.lightning_module, "training_step", *args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 640, in __call__
+[rank4]:     wrapper_output = wrapper_module(*args, **kwargs)
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "<frozen runpy>", line 198, in _run_module_as_main
+[rank0]:   File "<frozen runpy>", line 88, in _run_code
+[rank0]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 135, in <module>
+[rank0]:     main()
+[rank0]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 131, in main
+[rank0]:     trainer.fit(ldm, datamodule=datamodule, ckpt_path=args.resume)
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 538, in fit
+[rank0]:     call._call_and_handle_interrupt(
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 46, in _call_and_handle_interrupt
+[rank0]:     return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 105, in launch
+[rank0]:     return function(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 574, in _fit_impl
+[rank0]:     self._run(model, ckpt_path=ckpt_path)
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 981, in _run
+[rank0]:     results = self._run_stage()
+[rank0]:               ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1025, in _run_stage
+[rank0]:     self.fit_loop.run()
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 205, in run
+[rank0]:     self.advance()
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 363, in advance
+[rank0]:     self.epoch_loop.run(self._data_fetcher)
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 140, in run
+[rank0]:     self.advance(data_fetcher)
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 250, in advance
+[rank0]:     batch_output = self.automatic_optimization.run(trainer.optimizers[0], batch_idx, kwargs)
+[rank0]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 190, in run
+[rank0]:     self._optimizer_step(batch_idx, closure)
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 268, in _optimizer_step
+[rank0]:     call._call_lightning_module_hook(
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 167, in _call_lightning_module_hook
+[rank0]:     output = fn(*args, **kwargs)
+[rank0]:              ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 216, in optimizer_step
+[rank0]:     super().optimizer_step(
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/module.py", line 1306, in optimizer_step
+[rank0]:     optimizer.step(closure=optimizer_closure)
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 153, in step
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "<frozen runpy>", line 198, in _run_module_as_main
+[rank1]:   File "<frozen runpy>", line 88, in _run_code
+[rank1]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 135, in <module>
+[rank1]:     main()
+[rank1]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 131, in main
+[rank1]:     trainer.fit(ldm, datamodule=datamodule, ckpt_path=args.resume)
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 538, in fit
+[rank1]:     call._call_and_handle_interrupt(
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 46, in _call_and_handle_interrupt
+[rank1]:     return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 105, in launch
+[rank1]:     return function(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 574, in _fit_impl
+[rank1]:     self._run(model, ckpt_path=ckpt_path)
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 981, in _run
+[rank1]:     results = self._run_stage()
+[rank1]:               ^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1025, in _run_stage
+[rank1]:     self.fit_loop.run()
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 205, in run
+[rank1]:     self.advance()
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 363, in advance
+[rank1]:     self.epoch_loop.run(self._data_fetcher)
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 140, in run
+[rank1]:     self.advance(data_fetcher)
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 250, in advance
+[rank1]:     batch_output = self.automatic_optimization.run(trainer.optimizers[0], batch_idx, kwargs)
+[rank1]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 190, in run
+[rank1]:     self._optimizer_step(batch_idx, closure)
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 268, in _optimizer_step
+[rank1]:     call._call_lightning_module_hook(
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 167, in _call_lightning_module_hook
+[rank1]:     output = fn(*args, **kwargs)
+[rank1]:              ^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 216, in optimizer_step
+[rank1]:     super().optimizer_step(
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/module.py", line 1306, in optimizer_step
+[rank1]:     optimizer.step(closure=optimizer_closure)
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 153, in step
+[rank4]:                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank4]:     return self._call_impl(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank4]:     return forward_call(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+[rank4]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank4]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+[rank4]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank4]:     return self._call_impl(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank4]:     return forward_call(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 633, in wrapped_forward
+[rank4]:     out = method(*_args, **_kwargs)
+[rank4]:           ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 165, in training_step
+[rank4]:     loss = self.shared_step(batch)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 159, in shared_step
+[rank4]:     return self(y, context=context)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank4]:     return self._call_impl(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank4]:     return forward_call(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 153, in forward
+[rank4]:     return self.p_losses(x, t, *args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 140, in p_losses
+[rank4]:     model_out = self.model(x_noisy, t, context=context)
+[rank4]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank4]:     return self._call_impl(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank4]:     return forward_call(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 488, in forward
+[rank4]:     h = module(h, emb, context)
+[rank4]:         ^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:     step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+[rank0]:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/ddp.py", line 270, in optimizer_step
+[rank0]:     optimizer_output = super().optimizer_step(optimizer, closure, model, **kwargs)
+[rank0]:                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 238, in optimizer_step
+[rank0]:     return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 122, in optimizer_step
+[rank0]:     return optimizer.step(closure=closure, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 487, in wrapper
+[rank0]:     out = func(*args, **kwargs)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 91, in _use_grad
+[rank0]:     ret = func(self, *args, **kwargs)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/adamw.py", line 197, in step
+[rank0]:     loss = closure()
+[rank0]:            ^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 108, in _wrap_closure
+[rank0]:     closure_result = closure()
+[rank0]:                      ^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 144, in __call__
+[rank0]:     self._result = self.closure(*args, **kwargs)
+[rank0]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 129, in closure
+[rank0]:     step_output = self._step_fn()
+[rank0]:                   ^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 317, in _training_step
+[rank0]:     training_step_output = call._call_strategy_hook(trainer, "training_step", *kwargs.values())
+[rank0]:                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 319, in _call_strategy_hook
+[rank0]:     output = fn(*args, **kwargs)
+[rank0]:              ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 389, in training_step
+[rank0]:     return self._forward_redirection(self.model, self.lightning_module, "training_step", *args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 640, in __call__
+[rank0]:     wrapper_output = wrapper_module(*args, **kwargs)
+[rank1]:     step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+[rank1]:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/ddp.py", line 270, in optimizer_step
+[rank1]:     optimizer_output = super().optimizer_step(optimizer, closure, model, **kwargs)
+[rank1]:                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 238, in optimizer_step
+[rank1]:     return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 122, in optimizer_step
+[rank1]:     return optimizer.step(closure=closure, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 487, in wrapper
+[rank1]:     out = func(*args, **kwargs)
+[rank1]:           ^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 91, in _use_grad
+[rank1]:     ret = func(self, *args, **kwargs)
+[rank1]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/adamw.py", line 197, in step
+[rank1]:     loss = closure()
+[rank1]:            ^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 108, in _wrap_closure
+[rank1]:     closure_result = closure()
+[rank1]:                      ^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 144, in __call__
+[rank1]:     self._result = self.closure(*args, **kwargs)
+[rank1]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank1]:     return func(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 129, in closure
+[rank1]:     step_output = self._step_fn()
+[rank1]:                   ^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 317, in _training_step
+[rank1]:     training_step_output = call._call_strategy_hook(trainer, "training_step", *kwargs.values())
+[rank1]:                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 319, in _call_strategy_hook
+[rank1]:     output = fn(*args, **kwargs)
+[rank1]:              ^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 389, in training_step
+[rank1]:     return self._forward_redirection(self.model, self.lightning_module, "training_step", *args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 640, in __call__
+[rank1]:     wrapper_output = wrapper_module(*args, **kwargs)
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "<frozen runpy>", line 198, in _run_module_as_main
+[rank2]:   File "<frozen runpy>", line 88, in _run_code
+[rank2]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 135, in <module>
+[rank2]:     main()
+[rank2]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 131, in main
+[rank2]:     trainer.fit(ldm, datamodule=datamodule, ckpt_path=args.resume)
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 538, in fit
+[rank2]:     call._call_and_handle_interrupt(
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 46, in _call_and_handle_interrupt
+[rank2]:     return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 105, in launch
+[rank2]:     return function(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 574, in _fit_impl
+[rank2]:     self._run(model, ckpt_path=ckpt_path)
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 981, in _run
+[rank2]:     results = self._run_stage()
+[rank2]:               ^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1025, in _run_stage
+[rank2]:     self.fit_loop.run()
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 205, in run
+[rank2]:     self.advance()
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 363, in advance
+[rank2]:     self.epoch_loop.run(self._data_fetcher)
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 140, in run
+[rank2]:     self.advance(data_fetcher)
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 250, in advance
+[rank2]:     batch_output = self.automatic_optimization.run(trainer.optimizers[0], batch_idx, kwargs)
+[rank2]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 190, in run
+[rank2]:     self._optimizer_step(batch_idx, closure)
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 268, in _optimizer_step
+[rank2]:     call._call_lightning_module_hook(
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 167, in _call_lightning_module_hook
+[rank2]:     output = fn(*args, **kwargs)
+[rank2]:              ^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 216, in optimizer_step
+[rank2]:     super().optimizer_step(
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/module.py", line 1306, in optimizer_step
+[rank2]:     optimizer.step(closure=optimizer_closure)
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 153, in step
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "<frozen runpy>", line 198, in _run_module_as_main
+[rank3]:   File "<frozen runpy>", line 88, in _run_code
+[rank3]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 135, in <module>
+[rank3]:     main()
+[rank3]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 131, in main
+[rank3]:     trainer.fit(ldm, datamodule=datamodule, ckpt_path=args.resume)
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 538, in fit
+[rank3]:     call._call_and_handle_interrupt(
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 46, in _call_and_handle_interrupt
+[rank3]:     return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 105, in launch
+[rank3]:     return function(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 574, in _fit_impl
+[rank3]:     self._run(model, ckpt_path=ckpt_path)
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 981, in _run
+[rank3]:     results = self._run_stage()
+[rank3]:               ^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1025, in _run_stage
+[rank3]:     self.fit_loop.run()
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 205, in run
+[rank3]:     self.advance()
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 363, in advance
+[rank3]:     self.epoch_loop.run(self._data_fetcher)
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 140, in run
+[rank3]:     self.advance(data_fetcher)
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 250, in advance
+[rank3]:     batch_output = self.automatic_optimization.run(trainer.optimizers[0], batch_idx, kwargs)
+[rank3]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 190, in run
+[rank3]:     self._optimizer_step(batch_idx, closure)
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 268, in _optimizer_step
+[rank3]:     call._call_lightning_module_hook(
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 167, in _call_lightning_module_hook
+[rank3]:     output = fn(*args, **kwargs)
+[rank3]:              ^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 216, in optimizer_step
+[rank3]:     super().optimizer_step(
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/module.py", line 1306, in optimizer_step
+[rank3]:     optimizer.step(closure=optimizer_closure)
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 153, in step
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank4]:     return self._call_impl(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank4]:     return forward_call(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 51, in forward
+[rank4]:     x = layer(x, context[img_shape])
+[rank4]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank4]:     return self._call_impl(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank4]:     return forward_call(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 607, in forward
+[rank4]:     xy = self.filter(self.norm2(xy)) + xy
+[rank4]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank4]:     return self._call_impl(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank4]:     return forward_call(*args, **kwargs)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 366, in forward
+[rank4]:     x = torch.fft.irfftn(x, s=(D, H, W), dim=(1,2,3), norm="ortho")
+[rank4]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 594.00 MiB. GPU 4 has a total capacity of 139.80 GiB of which 342.94 MiB is free. Including non-PyTorch memory, this process has 139.46 GiB memory in use. Of the allocated memory 127.40 GiB is allocated by PyTorch, and 8.54 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank5]: Traceback (most recent call last):
+[rank5]:   File "<frozen runpy>", line 198, in _run_module_as_main
+[rank5]:   File "<frozen runpy>", line 88, in _run_code
+[rank5]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 135, in <module>
+[rank5]:     main()
+[rank5]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 131, in main
+[rank5]:     trainer.fit(ldm, datamodule=datamodule, ckpt_path=args.resume)
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 538, in fit
+[rank5]:     call._call_and_handle_interrupt(
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 46, in _call_and_handle_interrupt
+[rank5]:     return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 105, in launch
+[rank5]:     return function(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 574, in _fit_impl
+[rank5]:     self._run(model, ckpt_path=ckpt_path)
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 981, in _run
+[rank5]:     results = self._run_stage()
+[rank5]:               ^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1025, in _run_stage
+[rank5]:     self.fit_loop.run()
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 205, in run
+[rank5]:     self.advance()
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 363, in advance
+[rank5]:     self.epoch_loop.run(self._data_fetcher)
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 140, in run
+[rank5]:     self.advance(data_fetcher)
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 250, in advance
+[rank5]:     batch_output = self.automatic_optimization.run(trainer.optimizers[0], batch_idx, kwargs)
+[rank5]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 190, in run
+[rank5]:     self._optimizer_step(batch_idx, closure)
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 268, in _optimizer_step
+[rank5]:     call._call_lightning_module_hook(
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 167, in _call_lightning_module_hook
+[rank5]:     output = fn(*args, **kwargs)
+[rank5]:              ^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 216, in optimizer_step
+[rank5]:     super().optimizer_step(
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/module.py", line 1306, in optimizer_step
+[rank5]:     optimizer.step(closure=optimizer_closure)
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 153, in step
+[rank0]:                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+[rank0]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank0]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+[rank0]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 633, in wrapped_forward
+[rank0]:     out = method(*_args, **_kwargs)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 165, in training_step
+[rank0]:     loss = self.shared_step(batch)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 159, in shared_step
+[rank0]:     return self(y, context=context)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 153, in forward
+[rank0]:     return self.p_losses(x, t, *args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 140, in p_losses
+[rank0]:     model_out = self.model(x_noisy, t, context=context)
+[rank0]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 488, in forward
+[rank0]:     h = module(h, emb, context)
+[rank0]:         ^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+[rank1]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank1]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+[rank1]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 633, in wrapped_forward
+[rank1]:     out = method(*_args, **_kwargs)
+[rank1]:           ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 165, in training_step
+[rank1]:     loss = self.shared_step(batch)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 159, in shared_step
+[rank1]:     return self(y, context=context)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 153, in forward
+[rank1]:     return self.p_losses(x, t, *args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 140, in p_losses
+[rank1]:     model_out = self.model(x_noisy, t, context=context)
+[rank1]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 488, in forward
+[rank1]:     h = module(h, emb, context)
+[rank1]:         ^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:     step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+[rank2]:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/ddp.py", line 270, in optimizer_step
+[rank2]:     optimizer_output = super().optimizer_step(optimizer, closure, model, **kwargs)
+[rank2]:                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 238, in optimizer_step
+[rank2]:     return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 122, in optimizer_step
+[rank2]:     return optimizer.step(closure=closure, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 487, in wrapper
+[rank2]:     out = func(*args, **kwargs)
+[rank2]:           ^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 91, in _use_grad
+[rank2]:     ret = func(self, *args, **kwargs)
+[rank2]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/adamw.py", line 197, in step
+[rank2]:     loss = closure()
+[rank2]:            ^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 108, in _wrap_closure
+[rank2]:     closure_result = closure()
+[rank2]:                      ^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 144, in __call__
+[rank2]:     self._result = self.closure(*args, **kwargs)
+[rank2]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank2]:     return func(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 129, in closure
+[rank2]:     step_output = self._step_fn()
+[rank2]:                   ^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 317, in _training_step
+[rank2]:     training_step_output = call._call_strategy_hook(trainer, "training_step", *kwargs.values())
+[rank2]:                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 319, in _call_strategy_hook
+[rank2]:     output = fn(*args, **kwargs)
+[rank2]:              ^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 389, in training_step
+[rank2]:     return self._forward_redirection(self.model, self.lightning_module, "training_step", *args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 640, in __call__
+[rank2]:     wrapper_output = wrapper_module(*args, **kwargs)
+[rank3]:     step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+[rank3]:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/ddp.py", line 270, in optimizer_step
+[rank3]:     optimizer_output = super().optimizer_step(optimizer, closure, model, **kwargs)
+[rank3]:                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 238, in optimizer_step
+[rank3]:     return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 122, in optimizer_step
+[rank3]:     return optimizer.step(closure=closure, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 487, in wrapper
+[rank3]:     out = func(*args, **kwargs)
+[rank3]:           ^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 91, in _use_grad
+[rank3]:     ret = func(self, *args, **kwargs)
+[rank3]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/adamw.py", line 197, in step
+[rank3]:     loss = closure()
+[rank3]:            ^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 108, in _wrap_closure
+[rank3]:     closure_result = closure()
+[rank3]:                      ^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 144, in __call__
+[rank3]:     self._result = self.closure(*args, **kwargs)
+[rank3]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank3]:     return func(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 129, in closure
+[rank3]:     step_output = self._step_fn()
+[rank3]:                   ^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 317, in _training_step
+[rank3]:     training_step_output = call._call_strategy_hook(trainer, "training_step", *kwargs.values())
+[rank3]:                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 319, in _call_strategy_hook
+[rank3]:     output = fn(*args, **kwargs)
+[rank3]:              ^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 389, in training_step
+[rank3]:     return self._forward_redirection(self.model, self.lightning_module, "training_step", *args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 640, in __call__
+[rank3]:     wrapper_output = wrapper_module(*args, **kwargs)
+[rank5]:     step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+[rank5]:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/ddp.py", line 270, in optimizer_step
+[rank5]:     optimizer_output = super().optimizer_step(optimizer, closure, model, **kwargs)
+[rank5]:                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 238, in optimizer_step
+[rank5]:     return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 122, in optimizer_step
+[rank5]:     return optimizer.step(closure=closure, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 487, in wrapper
+[rank5]:     out = func(*args, **kwargs)
+[rank5]:           ^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 91, in _use_grad
+[rank5]:     ret = func(self, *args, **kwargs)
+[rank5]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/adamw.py", line 197, in step
+[rank5]:     loss = closure()
+[rank5]:            ^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 108, in _wrap_closure
+[rank5]:     closure_result = closure()
+[rank5]:                      ^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 144, in __call__
+[rank5]:     self._result = self.closure(*args, **kwargs)
+[rank5]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank5]:     return func(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 129, in closure
+[rank5]:     step_output = self._step_fn()
+[rank5]:                   ^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 317, in _training_step
+[rank5]:     training_step_output = call._call_strategy_hook(trainer, "training_step", *kwargs.values())
+[rank5]:                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 319, in _call_strategy_hook
+[rank5]:     output = fn(*args, **kwargs)
+[rank5]:              ^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 389, in training_step
+[rank5]:     return self._forward_redirection(self.model, self.lightning_module, "training_step", *args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 640, in __call__
+[rank5]:     wrapper_output = wrapper_module(*args, **kwargs)
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 51, in forward
+[rank0]:     x = layer(x, context[img_shape])
+[rank0]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 607, in forward
+[rank0]:     xy = self.filter(self.norm2(xy)) + xy
+[rank0]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 366, in forward
+[rank0]:     x = torch.fft.irfftn(x, s=(D, H, W), dim=(1,2,3), norm="ortho")
+[rank0]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 594.00 MiB. GPU 0 has a total capacity of 139.80 GiB of which 326.94 MiB is free. Including non-PyTorch memory, this process has 139.47 GiB memory in use. Of the allocated memory 127.38 GiB is allocated by PyTorch, and 8.62 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 51, in forward
+[rank1]:     x = layer(x, context[img_shape])
+[rank1]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 607, in forward
+[rank1]:     xy = self.filter(self.norm2(xy)) + xy
+[rank1]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 366, in forward
+[rank1]:     x = torch.fft.irfftn(x, s=(D, H, W), dim=(1,2,3), norm="ortho")
+[rank1]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 594.00 MiB. GPU 1 has a total capacity of 139.80 GiB of which 280.94 MiB is free. Including non-PyTorch memory, this process has 139.52 GiB memory in use. Of the allocated memory 127.38 GiB is allocated by PyTorch, and 8.62 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank2]:                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+[rank2]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank2]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+[rank2]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 633, in wrapped_forward
+[rank2]:     out = method(*_args, **_kwargs)
+[rank2]:           ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 165, in training_step
+[rank2]:     loss = self.shared_step(batch)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 159, in shared_step
+[rank2]:     return self(y, context=context)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 153, in forward
+[rank2]:     return self.p_losses(x, t, *args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 140, in p_losses
+[rank2]:     model_out = self.model(x_noisy, t, context=context)
+[rank2]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 488, in forward
+[rank2]:     h = module(h, emb, context)
+[rank2]:         ^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+[rank3]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank3]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+[rank3]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 633, in wrapped_forward
+[rank3]:     out = method(*_args, **_kwargs)
+[rank3]:           ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 165, in training_step
+[rank3]:     loss = self.shared_step(batch)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 159, in shared_step
+[rank3]:     return self(y, context=context)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 153, in forward
+[rank3]:     return self.p_losses(x, t, *args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 140, in p_losses
+[rank3]:     model_out = self.model(x_noisy, t, context=context)
+[rank3]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 488, in forward
+[rank3]:     h = module(h, emb, context)
+[rank3]:         ^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank5]:     return self._call_impl(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank5]:     return forward_call(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+[rank5]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank5]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+[rank5]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank5]:     return self._call_impl(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank5]:     return forward_call(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 633, in wrapped_forward
+[rank5]:     out = method(*_args, **_kwargs)
+[rank5]:           ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 165, in training_step
+[rank5]:     loss = self.shared_step(batch)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 159, in shared_step
+[rank5]:     return self(y, context=context)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank5]:     return self._call_impl(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank5]:     return forward_call(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 153, in forward
+[rank5]:     return self.p_losses(x, t, *args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 140, in p_losses
+[rank5]:     model_out = self.model(x_noisy, t, context=context)
+[rank5]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank5]:     return self._call_impl(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank5]:     return forward_call(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 488, in forward
+[rank5]:     h = module(h, emb, context)
+[rank5]:         ^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 51, in forward
+[rank2]:     x = layer(x, context[img_shape])
+[rank2]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 607, in forward
+[rank2]:     xy = self.filter(self.norm2(xy)) + xy
+[rank2]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 366, in forward
+[rank2]:     x = torch.fft.irfftn(x, s=(D, H, W), dim=(1,2,3), norm="ortho")
+[rank2]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 594.00 MiB. GPU 2 has a total capacity of 139.80 GiB of which 222.94 MiB is free. Including non-PyTorch memory, this process has 139.57 GiB memory in use. Of the allocated memory 127.39 GiB is allocated by PyTorch, and 8.67 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 51, in forward
+[rank3]:     x = layer(x, context[img_shape])
+[rank3]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 607, in forward
+[rank3]:     xy = self.filter(self.norm2(xy)) + xy
+[rank3]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 366, in forward
+[rank3]:     x = torch.fft.irfftn(x, s=(D, H, W), dim=(1,2,3), norm="ortho")
+[rank3]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 594.00 MiB. GPU 3 has a total capacity of 139.80 GiB of which 222.94 MiB is free. Including non-PyTorch memory, this process has 139.57 GiB memory in use. Of the allocated memory 127.39 GiB is allocated by PyTorch, and 8.67 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank5]:     return self._call_impl(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank5]:     return forward_call(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 51, in forward
+[rank5]:     x = layer(x, context[img_shape])
+[rank5]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank5]:     return self._call_impl(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank5]:     return forward_call(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 607, in forward
+[rank5]:     xy = self.filter(self.norm2(xy)) + xy
+[rank5]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank5]:     return self._call_impl(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank5]:     return forward_call(*args, **kwargs)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 366, in forward
+[rank5]:     x = torch.fft.irfftn(x, s=(D, H, W), dim=(1,2,3), norm="ortho")
+[rank5]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 594.00 MiB. GPU 5 has a total capacity of 139.80 GiB of which 222.94 MiB is free. Including non-PyTorch memory, this process has 139.57 GiB memory in use. Of the allocated memory 127.38 GiB is allocated by PyTorch, and 8.67 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank6]: Traceback (most recent call last):
+[rank6]:   File "<frozen runpy>", line 198, in _run_module_as_main
+[rank6]:   File "<frozen runpy>", line 88, in _run_code
+[rank6]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 135, in <module>
+[rank6]:     main()
+[rank6]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 131, in main
+[rank6]:     trainer.fit(ldm, datamodule=datamodule, ckpt_path=args.resume)
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 538, in fit
+[rank6]:     call._call_and_handle_interrupt(
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 46, in _call_and_handle_interrupt
+[rank6]:     return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 105, in launch
+[rank6]:     return function(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 574, in _fit_impl
+[rank6]:     self._run(model, ckpt_path=ckpt_path)
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 981, in _run
+[rank6]:     results = self._run_stage()
+[rank6]:               ^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1025, in _run_stage
+[rank6]:     self.fit_loop.run()
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 205, in run
+[rank6]:     self.advance()
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 363, in advance
+[rank6]:     self.epoch_loop.run(self._data_fetcher)
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 140, in run
+[rank6]:     self.advance(data_fetcher)
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 250, in advance
+[rank6]:     batch_output = self.automatic_optimization.run(trainer.optimizers[0], batch_idx, kwargs)
+[rank6]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 190, in run
+[rank6]:     self._optimizer_step(batch_idx, closure)
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 268, in _optimizer_step
+[rank6]:     call._call_lightning_module_hook(
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 167, in _call_lightning_module_hook
+[rank6]:     output = fn(*args, **kwargs)
+[rank6]:              ^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 216, in optimizer_step
+[rank6]:     super().optimizer_step(
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/module.py", line 1306, in optimizer_step
+[rank6]:     optimizer.step(closure=optimizer_closure)
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 153, in step
+[rank6]:     step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+[rank6]:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/ddp.py", line 270, in optimizer_step
+[rank6]:     optimizer_output = super().optimizer_step(optimizer, closure, model, **kwargs)
+[rank6]:                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 238, in optimizer_step
+[rank6]:     return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 122, in optimizer_step
+[rank6]:     return optimizer.step(closure=closure, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 487, in wrapper
+[rank6]:     out = func(*args, **kwargs)
+[rank6]:           ^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 91, in _use_grad
+[rank6]:     ret = func(self, *args, **kwargs)
+[rank6]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/adamw.py", line 197, in step
+[rank6]:     loss = closure()
+[rank6]:            ^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 108, in _wrap_closure
+[rank6]:     closure_result = closure()
+[rank6]:                      ^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 144, in __call__
+[rank6]:     self._result = self.closure(*args, **kwargs)
+[rank6]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank6]:     return func(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 129, in closure
+[rank6]:     step_output = self._step_fn()
+[rank6]:                   ^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 317, in _training_step
+[rank6]:     training_step_output = call._call_strategy_hook(trainer, "training_step", *kwargs.values())
+[rank6]:                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 319, in _call_strategy_hook
+[rank6]:     output = fn(*args, **kwargs)
+[rank6]:              ^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 389, in training_step
+[rank6]:     return self._forward_redirection(self.model, self.lightning_module, "training_step", *args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 640, in __call__
+[rank6]:     wrapper_output = wrapper_module(*args, **kwargs)
+[rank6]:                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank6]:     return self._call_impl(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank6]:     return forward_call(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+[rank6]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank6]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+[rank6]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank6]:     return self._call_impl(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank6]:     return forward_call(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 633, in wrapped_forward
+[rank6]:     out = method(*_args, **_kwargs)
+[rank6]:           ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 165, in training_step
+[rank6]:     loss = self.shared_step(batch)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 159, in shared_step
+[rank6]:     return self(y, context=context)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank6]:     return self._call_impl(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank6]:     return forward_call(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 153, in forward
+[rank6]:     return self.p_losses(x, t, *args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 140, in p_losses
+[rank6]:     model_out = self.model(x_noisy, t, context=context)
+[rank6]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank6]:     return self._call_impl(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank6]:     return forward_call(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 488, in forward
+[rank6]:     h = module(h, emb, context)
+[rank6]:         ^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank6]:     return self._call_impl(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank6]:     return forward_call(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 51, in forward
+[rank6]:     x = layer(x, context[img_shape])
+[rank6]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank6]:     return self._call_impl(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank6]:     return forward_call(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 607, in forward
+[rank6]:     xy = self.filter(self.norm2(xy)) + xy
+[rank6]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank6]:     return self._call_impl(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank6]:     return forward_call(*args, **kwargs)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 366, in forward
+[rank6]:     x = torch.fft.irfftn(x, s=(D, H, W), dim=(1,2,3), norm="ortho")
+[rank6]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 594.00 MiB. GPU 6 has a total capacity of 139.80 GiB of which 338.94 MiB is free. Including non-PyTorch memory, this process has 139.46 GiB memory in use. Of the allocated memory 127.39 GiB is allocated by PyTorch, and 8.56 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank7]: Traceback (most recent call last):
+[rank7]:   File "<frozen runpy>", line 198, in _run_module_as_main
+[rank7]:   File "<frozen runpy>", line 88, in _run_code
+[rank7]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 135, in <module>
+[rank7]:     main()
+[rank7]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/train.py", line 131, in main
+[rank7]:     trainer.fit(ldm, datamodule=datamodule, ckpt_path=args.resume)
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 538, in fit
+[rank7]:     call._call_and_handle_interrupt(
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 46, in _call_and_handle_interrupt
+[rank7]:     return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 105, in launch
+[rank7]:     return function(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 574, in _fit_impl
+[rank7]:     self._run(model, ckpt_path=ckpt_path)
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 981, in _run
+[rank7]:     results = self._run_stage()
+[rank7]:               ^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1025, in _run_stage
+[rank7]:     self.fit_loop.run()
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 205, in run
+[rank7]:     self.advance()
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/fit_loop.py", line 363, in advance
+[rank7]:     self.epoch_loop.run(self._data_fetcher)
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 140, in run
+[rank7]:     self.advance(data_fetcher)
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 250, in advance
+[rank7]:     batch_output = self.automatic_optimization.run(trainer.optimizers[0], batch_idx, kwargs)
+[rank7]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 190, in run
+[rank7]:     self._optimizer_step(batch_idx, closure)
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 268, in _optimizer_step
+[rank7]:     call._call_lightning_module_hook(
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 167, in _call_lightning_module_hook
+[rank7]:     output = fn(*args, **kwargs)
+[rank7]:              ^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 216, in optimizer_step
+[rank7]:     super().optimizer_step(
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/module.py", line 1306, in optimizer_step
+[rank7]:     optimizer.step(closure=optimizer_closure)
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 153, in step
+[rank7]:     step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+[rank7]:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/ddp.py", line 270, in optimizer_step
+[rank7]:     optimizer_output = super().optimizer_step(optimizer, closure, model, **kwargs)
+[rank7]:                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 238, in optimizer_step
+[rank7]:     return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 122, in optimizer_step
+[rank7]:     return optimizer.step(closure=closure, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 487, in wrapper
+[rank7]:     out = func(*args, **kwargs)
+[rank7]:           ^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/optimizer.py", line 91, in _use_grad
+[rank7]:     ret = func(self, *args, **kwargs)
+[rank7]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/optim/adamw.py", line 197, in step
+[rank7]:     loss = closure()
+[rank7]:            ^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/plugins/precision/precision.py", line 108, in _wrap_closure
+[rank7]:     closure_result = closure()
+[rank7]:                      ^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 144, in __call__
+[rank7]:     self._result = self.closure(*args, **kwargs)
+[rank7]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank7]:     return func(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 129, in closure
+[rank7]:     step_output = self._step_fn()
+[rank7]:                   ^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 317, in _training_step
+[rank7]:     training_step_output = call._call_strategy_hook(trainer, "training_step", *kwargs.values())
+[rank7]:                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 319, in _call_strategy_hook
+[rank7]:     output = fn(*args, **kwargs)
+[rank7]:              ^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 389, in training_step
+[rank7]:     return self._forward_redirection(self.model, self.lightning_module, "training_step", *args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 640, in __call__
+[rank7]:     wrapper_output = wrapper_module(*args, **kwargs)
+[rank7]:                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank7]:     return self._call_impl(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank7]:     return forward_call(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+[rank7]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank7]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+[rank7]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank7]:     return self._call_impl(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank7]:     return forward_call(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 633, in wrapped_forward
+[rank7]:     out = method(*_args, **_kwargs)
+[rank7]:           ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 165, in training_step
+[rank7]:     loss = self.shared_step(batch)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 159, in shared_step
+[rank7]:     return self(y, context=context)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank7]:     return self._call_impl(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank7]:     return forward_call(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 153, in forward
+[rank7]:     return self.p_losses(x, t, *args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/diffusion/diffusion.py", line 140, in p_losses
+[rank7]:     model_out = self.model(x_noisy, t, context=context)
+[rank7]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank7]:     return self._call_impl(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank7]:     return forward_call(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 488, in forward
+[rank7]:     h = module(h, emb, context)
+[rank7]:         ^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank7]:     return self._call_impl(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank7]:     return forward_call(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/genforecast/unet.py", line 51, in forward
+[rank7]:     x = layer(x, context[img_shape])
+[rank7]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank7]:     return self._call_impl(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank7]:     return forward_call(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 607, in forward
+[rank7]:     xy = self.filter(self.norm2(xy)) + xy
+[rank7]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank7]:     return self._call_impl(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/miniconda3/envs/tito_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank7]:     return forward_call(*args, **kwargs)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/models/blocks/afno.py", line 366, in forward
+[rank7]:     x = torch.fft.irfftn(x, s=(D, H, W), dim=(1,2,3), norm="ortho")
+[rank7]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 594.00 MiB. GPU 7 has a total capacity of 139.80 GiB of which 244.94 MiB is free. Including non-PyTorch memory, this process has 139.55 GiB memory in use. Of the allocated memory 127.39 GiB is allocated by PyTorch, and 8.88 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+srun: error: gpu12: task 3: Exited with exit code 1
+srun: error: gpu12: task 5: Exited with exit code 1
+srun: error: gpu12: task 0: Exited with exit code 1
+srun: error: gpu12: task 2: Exited with exit code 1
+srun: error: gpu12: task 4: Exited with exit code 1
+srun: error: gpu12: task 1: Exited with exit code 1
+srun: error: gpu12: task 7: Exited with exit code 1
+srun: error: gpu12: task 6: Exited with exit code 1

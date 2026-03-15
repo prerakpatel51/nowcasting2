@@ -1,0 +1,73 @@
+================================================================================
+COMMANDS REFERENCE
+================================================================================
+
+--- DATA PIPELINE ---
+
+# Download IMERG data
+sbatch utils/data_download_scripts/download_imerg.slurm
+
+# Download missing IMERG files
+sbatch utils/data_download_scripts/download_missing.slurm
+
+# Convert downloaded data to HDF5
+sbatch utils/data_download_scripts/convert_to_hdf5.slurm
+
+
+--- LDCAST TRAINING ---
+
+# Train LDCast model (SLURM)
+sbatch nowcaster_models/ldcast/train_ldcast.slurm
+
+# Train LDCast model (direct)
+python -m nowcaster_models.ldcast.train
+
+# Train with custom learning rate
+python -m nowcaster_models.ldcast.train --lr 2e-4
+
+# Train with custom batch size
+python -m nowcaster_models.ldcast.train --batch_size 8
+
+# Train with custom config file
+python -m nowcaster_models.ldcast.train --config path/to/config.yaml
+
+
+--- LDCAST FORECAST ---
+
+# Run forecast with trained checkpoint
+python -m nowcaster_models.ldcast.forecast --checkpoint nowcaster_models/ldcast/checkpoints/best.ckpt
+
+# Run forecast with more ensemble samples
+python -m nowcaster_models.ldcast.forecast --checkpoint /home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints/epoch-epoch=20-val_loss_ema=0.0368.ckpt --num_samples 20
+
+# Run forecast with custom diffusion steps
+python -m nowcaster_models.ldcast.forecast --checkpoint path/to/checkpoint.ckpt --steps 50
+
+
+--- BASELINE NOWCASTING (STEPS / Lagrangian Persistence) ---
+
+# Run all baseline models on test set (SLURM)
+sbatch nowcaster_results/run_nowcast.slurm
+
+# Run baseline models directly
+python nowcaster_results/run_nowcast.py --model all --split test
+python nowcaster_results/run_nowcast.py --model steps --split test
+python nowcaster_results/run_nowcast.py --model lp --split test
+
+
+--- EVALUATION ---
+
+# Evaluate model results
+python nowcaster_results/evaluate_model.py
+
+
+--- LOG LOCATIONS ---
+
+# LDCast training logs (SLURM stdout/stderr)
+ls logs/ldcast_training_logs/
+
+# LDCast training metrics (CSV)
+ls logs/ldcast_training_logs/metrics/
+
+# Nowcast inference logs
+ls logs/nowcast_logs/
