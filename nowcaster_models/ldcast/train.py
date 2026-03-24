@@ -49,9 +49,18 @@ def build_model(config):
     lr = model_cfg.get("lr", 1e-4)
     lr_warmup = model_cfg.get("lr_warmup", 0)
     model_dir = model_cfg.get("model_dir",
-        os.path.join(os.path.dirname(__file__), "checkpoints_smallest_model"))
+        os.path.join(os.path.dirname(__file__), "checkpoints_improved_v2"))
+
+    # New improvement flags (backward compatible defaults)
+    use_groupnorm = model_cfg.get("use_groupnorm", False)
+    dropout = model_cfg.get("dropout", 0.0)
+    beta_schedule = model_cfg.get("beta_schedule", "linear")
 
     os.makedirs(model_dir, exist_ok=True)
+
+    # Set GroupNorm flag before constructing the UNet
+    from .models.diffusion.utils import set_use_groupnorm
+    set_use_groupnorm(use_groupnorm)
 
     # Identity autoencoder (no-op for pixel-space diffusion)
     autoencoder = IdentityAutoencoder()
@@ -80,12 +89,13 @@ def build_model(config):
         dims=3,
         num_timesteps=output_timesteps,
         context_ch=context_encoder.cascade_dims,
+        dropout=dropout,
     )
 
     # Wire everything into the LatentDiffusion training wrapper
     (ldm, trainer) = setup_genforecast_training(
         unet, autoencoder, context_encoder, model_dir, lr=lr,
-        lr_warmup=lr_warmup,
+        lr_warmup=lr_warmup, beta_schedule=beta_schedule,
     )
 
     return (ldm, trainer)
@@ -94,7 +104,7 @@ def build_model(config):
 def main():
     parser = argparse.ArgumentParser(description="Train LDCast diffusion model on IMERG")
     parser.add_argument("--config", type=str,
-        default=os.path.join(os.path.dirname(__file__), "config_smallest.yaml"),
+        default=os.path.join(os.path.dirname(__file__), "config_improved_v2.yaml"),
         help="Path to config YAML file")
     parser.add_argument("--lr", type=float, default=None,
         help="Override learning rate")

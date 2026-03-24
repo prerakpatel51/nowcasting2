@@ -54,6 +54,7 @@ data/processed/
 
 # Model checkpoints and weights
 checkpoints/
+
 *.pt
 *.pth
 *.ckpt

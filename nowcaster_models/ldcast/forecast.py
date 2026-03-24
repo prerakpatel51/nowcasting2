@@ -49,7 +49,7 @@ def inverse_normalize(x, mean, std, threshold, fill_value):
 
 @torch.no_grad()
 def generate_forecast(ldm, input_batch, num_samples=1, plms_steps=50,
-                      verbose=True):
+                      verbose=True, clip_denoised=False, clip_range=(-5.0, 4.0)):
     """Generate ensemble forecasts using PLMS sampling.
 
     Args:
@@ -59,6 +59,8 @@ def generate_forecast(ldm, input_batch, num_samples=1, plms_steps=50,
         num_samples: Number of ensemble members to generate per input.
         plms_steps: Number of PLMS denoising steps (default: 50).
         verbose: Print progress info.
+        clip_denoised: If True, clip predicted x0 during PLMS sampling.
+        clip_range: (lo, hi) bounds for clipping in normalized space.
 
     Returns:
         samples: Tensor of shape (num_samples, B, 1, 12, 64, 64) in normalized space.
@@ -78,6 +80,8 @@ def generate_forecast(ldm, input_batch, num_samples=1, plms_steps=50,
 
     # Setup PLMS sampler
     sampler = PLMSSampler(ldm)
+    sampler.clip_denoised = clip_denoised
+    sampler.clip_range = clip_range
 
     all_samples = []
     for s in range(num_samples):
@@ -116,7 +120,8 @@ def _render_frame(data, title_text, cmap, norm, figsize=(5, 4)):
 def _render_compare_frame(pred_data, tgt_data, title_text, pred_label,
                           cmap, norm):
     """Render a side-by-side prediction vs target frame to RGB array."""
-    fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+    fig, axes = plt.subplots(1, 2, figsize=(11, 4),
+                             gridspec_kw={"right": 0.88})
     im0 = axes[0].imshow(pred_data, cmap=cmap, norm=norm, interpolation="nearest")
     axes[0].set_title(pred_label)
     im1 = axes[1].imshow(tgt_data, cmap=cmap, norm=norm, interpolation="nearest")
@@ -124,10 +129,38 @@ def _render_compare_frame(pred_data, tgt_data, title_text, pred_label,
     for a in axes:
         a.set_xticks([])
         a.set_yticks([])
-    fig.colorbar(im1, ax=axes.tolist(), shrink=0.8, pad=0.02,
-                 label="Precipitation (mm/hr)")
+    cbar_ax = fig.add_axes([0.90, 0.15, 0.02, 0.65])
+    fig.colorbar(im1, cax=cbar_ax, label="Precipitation (mm/hr)")
     fig.suptitle(title_text)
-    fig.tight_layout()
+    fig.canvas.draw()
+    img = np.asarray(fig.canvas.buffer_rgba())[..., :3].copy()
+    plt.close(fig)
+    return img
+
+
+def _render_three_panel_frame(input_data, pred_data, tgt_data, title_text,
+                              input_label, pred_label, tgt_label, cmap, norm):
+    """Render Input | Prediction | Target frame to RGB array.
+
+    Any panel can be None to show a blank (gray) panel.
+    """
+    fig, axes = plt.subplots(1, 3, figsize=(15, 4),
+                             gridspec_kw={"right": 0.90})
+    for ax, data, label in zip(axes, [input_data, pred_data, tgt_data],
+                                [input_label, pred_label, tgt_label]):
+        if data is not None:
+            ax.imshow(data, cmap=cmap, norm=norm, interpolation="nearest")
+        else:
+            ax.set_facecolor("#e0e0e0")
+        ax.set_title(label)
+        ax.set_xticks([])
+        ax.set_yticks([])
+
+    # Dummy image for colorbar (use the norm range)
+    sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+    cbar_ax = fig.add_axes([0.92, 0.15, 0.015, 0.65])
+    fig.colorbar(sm, cax=cbar_ax, label="Precipitation (mm/hr)")
+    fig.suptitle(title_text, fontsize=13)
     fig.canvas.draw()
     img = np.asarray(fig.canvas.buffer_rgba())[..., :3].copy()
     plt.close(fig)
@@ -135,7 +168,7 @@ def _render_compare_frame(pred_data, tgt_data, title_text, pred_label,
 
 
 def save_forecast_gif(predictions, targets, output_dir, interval_minutes=30,
-                      vmin=0, vmax=10, batch_idx=0):
+                      vmin=0, vmax=10, batch_idx=0, inputs=None):
     """Save prediction and target frames as animated GIFs.
 
     Args:
@@ -146,6 +179,7 @@ def save_forecast_gif(predictions, targets, output_dir, interval_minutes=30,
         vmin: Colorbar minimum.
         vmax: Colorbar maximum.
         batch_idx: Batch index label for filenames.
+        inputs: (B, 1, T_in, H, W) precipitation in mm/hr, or None.
     """
     os.makedirs(output_dir, exist_ok=True)
 
@@ -156,7 +190,8 @@ def save_forecast_gif(predictions, targets, output_dir, interval_minutes=30,
     B = targets.shape[0]
     num_samples = predictions.shape[0]
     T_out = targets.shape[2]  # (B, C, T_out, H, W)
-    frame_duration = 1.0 / 3  # 3 fps
+    T_in = inputs.shape[2] if inputs is not None else 0
+    frame_duration_ms = 500  # 2 seconds per frame
 
     for b in range(B):
         target_frames = targets[b, 0]  # (T_out, H, W)
@@ -170,7 +205,7 @@ def save_forecast_gif(predictions, targets, output_dir, interval_minutes=30,
             imgs.append(img)
         gif_path = os.path.join(output_dir,
                                 f"batch{batch_idx}_sample{b}_target.gif")
-        imageio.mimsave(gif_path, imgs, duration=frame_duration, loop=0)
+        imageio.mimsave(gif_path, imgs, duration=frame_duration_ms, loop=0)
         print(f"  Saved {gif_path}")
 
         # --- Prediction vs Target GIF per ensemble member ---
@@ -186,8 +221,42 @@ def save_forecast_gif(predictions, targets, output_dir, interval_minutes=30,
             gif_path = os.path.join(
                 output_dir,
                 f"batch{batch_idx}_sample{b}_member{s+1}.gif")
-            imageio.mimsave(gif_path, imgs, duration=frame_duration, loop=0)
+            imageio.mimsave(gif_path, imgs, duration=frame_duration_ms, loop=0)
             print(f"  Saved {gif_path}")
+
+        # --- Combined Input → Prediction → Target GIF per ensemble member ---
+        if inputs is not None:
+            input_frames = inputs[b, 0]  # (T_in, H, W)
+            for s in range(num_samples):
+                pred_frames = predictions[s, b, 0]
+                imgs = []
+
+                # Phase 1: Input window (Prediction & Target blank)
+                for t in range(T_in):
+                    t_min = (t - T_in + 1) * interval_minutes
+                    img = _render_three_panel_frame(
+                        input_frames[t], None, None,
+                        f"Input phase: t={t_min} min",
+                        f"Input (t={t_min} min)", "Prediction", "Target",
+                        cmap, norm)
+                    imgs.append(img)
+
+                # Phase 2: Forecast (Input frozen on last frame)
+                last_input = input_frames[-1]
+                for t in range(T_out):
+                    t_min = (t + 1) * interval_minutes
+                    img = _render_three_panel_frame(
+                        last_input, pred_frames[t], target_frames[t],
+                        f"Forecast phase: t=+{t_min} min",
+                        "Input (last)", f"Prediction (member {s+1})", "Target",
+                        cmap, norm)
+                    imgs.append(img)
+
+                gif_path = os.path.join(
+                    output_dir,
+                    f"batch{batch_idx}_sample{b}_combined_member{s+1}.gif")
+                imageio.mimsave(gif_path, imgs, duration=frame_duration_ms, loop=0)
+                print(f"  Saved {gif_path}")
 
 
 def main():
@@ -196,7 +265,7 @@ def main():
     parser.add_argument("--checkpoint", type=str, required=True,
         help="Path to trained model checkpoint (.ckpt)")
     parser.add_argument("--config", type=str,
-        default=os.path.join(os.path.dirname(__file__), "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/config_smallest.yaml"),
+        default=os.path.join(os.path.dirname(__file__), "/home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/config_improved.yaml"),
         help="Path to config YAML file")
     parser.add_argument("--num_samples", type=int, default=1,
         help="Number of ensemble members to generate")
@@ -207,9 +276,9 @@ def main():
     parser.add_argument("--split", type=str, default="test",
         choices=["train", "valid", "test"],
         help="Which data split to run inference on")
-    parser.add_argument("--num_batches", type=int, default=1,
+    parser.add_argument("--num_batches", type=int, default=3,
         help="Number of batches to process")
-    parser.add_argument("--gif_dir", type=str, default="forecast_gifs_smallest_model",
+    parser.add_argument("--gif_dir", type=str, default="forecast_gifs_improved_v3_model",
         help="Directory to save forecast GIFs")
     args = parser.parse_args()
 
@@ -243,6 +312,11 @@ def main():
     else:
         dataloader = datamodule.train_dataloader()
 
+    # Read clip settings from config (backward compatible)
+    model_cfg = config.get("model", {})
+    clip_denoised = model_cfg.get("clip_denoised", False)
+    clip_range = tuple(model_cfg.get("clip_range", [-5.0, 4.0]))
+
     # Run inference
     all_predictions = []
     all_targets = []
@@ -259,32 +333,29 @@ def main():
             ldm, batch,
             num_samples=args.num_samples,
             plms_steps=args.steps,
+            clip_denoised=clip_denoised,
+            clip_range=clip_range,
         )
 
         # Debug: check raw model output stats
         raw = samples.numpy()
         raw_tgt = target.numpy()
+        raw_inp = pred_batch[0][0].numpy()  # (B, 1, T_in, H, W)
         print(f"  Raw predictions — min: {raw.min():.4f}, max: {raw.max():.4f}, "
               f"mean: {raw.mean():.4f}, std: {raw.std():.4f}")
         print(f"  Raw targets     — min: {raw_tgt.min():.4f}, max: {raw_tgt.max():.4f}, "
               f"mean: {raw_tgt.mean():.4f}, std: {raw_tgt.std():.4f}")
 
         # Inverse normalize to get precipitation in mm/hr
-        samples_precip = inverse_normalize(
-            raw.copy(),
+        inv_kwargs = dict(
             mean=config.transform.mean,
             std=config.transform.std,
             threshold=config.transform.threshold,
             fill_value=config.transform.fill_value,
         )
-
-        target_precip = inverse_normalize(
-            raw_tgt.copy(),
-            mean=config.transform.mean,
-            std=config.transform.std,
-            threshold=config.transform.threshold,
-            fill_value=config.transform.fill_value,
-        )
+        samples_precip = inverse_normalize(raw.copy(), **inv_kwargs)
+        target_precip = inverse_normalize(raw_tgt.copy(), **inv_kwargs)
+        input_precip = inverse_normalize(raw_inp.copy(), **inv_kwargs)
 
         print(f"  After inv-norm preds — min: {samples_precip.min():.4f}, "
               f"max: {samples_precip.max():.4f}, nonzero: {(samples_precip > 0).sum()}")
@@ -301,6 +372,7 @@ def main():
             output_dir=args.gif_dir,
             interval_minutes=config.pipeline.interval_minutes,
             batch_idx=batch_idx,
+            inputs=input_precip,
         )
 
     # Save results

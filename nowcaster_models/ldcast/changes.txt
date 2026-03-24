@@ -1,0 +1,102 @@
+Changes for improved LDCast model
+==================================
+
+All changes are controlled by flags in config_improved.yaml.
+Existing configs (config_smallest.yaml, config_small.yaml, config_large.yaml)
+remain unchanged and will produce identical behavior.
+
+
+1. GroupNorm in UNet (model.use_groupnorm: true)
+   - File modified: models/diffusion/utils.py
+   - Added _USE_GROUPNORM flag and set_use_groupnorm() function
+   - When true, enables GroupNorm32(32, channels) in all UNet ResBlocks
+   - When false (default), uses nn.Identity() as before
+   - Why: Without normalization, UNet activations drift, noise prediction
+     becomes biased, causing systematic over-prediction
+
+2. Dropout in UNet (model.dropout: 0.1)
+   - File modified: train.py
+   - Reads model.dropout from config and passes to UNetModel constructor
+   - Default: 0.0 (no dropout, same as before)
+   - Why: Training logs show significant overfitting (train_loss=0.028 vs
+     val_loss=0.037). Dropout regularizes the denoiser.
+
+3. Cosine noise schedule (model.beta_schedule: cosine)
+   - Files modified: train.py, models/genforecast/training.py
+   - Passes beta_schedule from config through to LatentDiffusion constructor
+   - Default: "linear" (same as before)
+   - Why: Cosine schedule distributes noise more evenly across timesteps,
+     giving the model more capacity at the critical dry/rain boundary
+
+4. Pred_x0 clipping during PLMS sampling (model.clip_denoised: true)
+   - Files modified: models/diffusion/plms.py, forecast.py
+   - Clips predicted x0 to [clip_range[0], clip_range[1]] during denoising
+   - Default: false (no clipping, same as before)
+   - Config: model.clip_range = [-5.0, 4.0] (normalized space bounds)
+   - Why: Without clipping, unrealistic intermediate predictions propagate
+     through the denoising chain, biasing the final output
+
+5. Dry bin sampling weight (sampling.dry_bin_weight: 0.35)
+   - Files modified: processing/sampling.py, processing/batch.py, dataloader.py
+   - Gives dry/zero bin 35% sampling probability instead of uniform 1/N
+   - Default: 0.0 (uniform sampling, same as before)
+   - Backward compatible: works with both fresh and cached samplers
+   - Why: With uniform 1/11 bins, only 9% of training batches have dry
+     targets. Model barely learns "input -> dry output" mapping.
+
+6. Reduced bins (sampling.num_bins: 6)
+   - Config change only (no code change needed)
+   - Reduced from 10 to 6 intensity bins
+   - IMPORTANT: uses cache_dir: cache_improved/ to avoid stale caches
+   - Why: Fewer bins = each bin gets more training samples
+
+7. Lower learning rate (model.lr: 5e-5)
+   - Config change only
+   - Reduced from 1e-4 to 5e-5
+   - Why: Helps with overfitting, more stable convergence
+
+8. Recompute normalization statistics
+   - New file: compute_normalization.py
+   - Run: python -m nowcaster_models.ldcast.compute_normalization --config nowcaster_models/ldcast/config_improved.yaml
+   - Computes mean/std from FULL distribution (including zero patches)
+   - Current stats (mean=-0.1399, std=0.4151) were computed from
+     precipitating pixels only, putting dry pixels at -4.48 sigma
+   - Why: Dry pixels at -4.48 sigma are extremely hard for diffusion
+     to model. Recentering brings them closer to 0.
+
+
+New files created
+-----------------
+  config_improved.yaml       - New config with all improvement flags
+  compute_normalization.py   - Script to recompute mean/std
+  changes.txt                - This file
+
+
+Files modified (backward compatible)
+-------------------------------------
+  models/diffusion/utils.py     - GroupNorm flag mechanism
+  models/diffusion/plms.py      - pred_x0 clipping support
+  models/genforecast/training.py - beta_schedule passthrough
+  train.py                       - reads new config flags, passes to model
+  forecast.py                    - reads clip config, passes to sampler
+  processing/sampling.py         - dry_bin_weight support in sampler
+  processing/batch.py            - dry_bin_weight passthrough to sampler
+  dataloader.py                  - reads dry_bin_weight from config
+
+
+How to use
+----------
+1. Compute new normalization stats:
+     python -m nowcaster_models.ldcast.compute_normalization \
+       --config nowcaster_models/ldcast/config_improved.yaml
+
+2. Update mean/std in config_improved.yaml with the printed values
+
+3. Train:
+     python -m nowcaster_models.ldcast.train \
+       --config nowcaster_models/ldcast/config_improved.yaml
+
+4. Forecast:
+     python -m nowcaster_models.ldcast.forecast \
+       --config nowcaster_models/ldcast/config_improved.yaml \
+       --checkpoint nowcaster_models/ldcast/checkpoints_improved/best-*.ckpt

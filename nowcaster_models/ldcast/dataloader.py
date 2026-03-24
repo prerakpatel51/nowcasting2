@@ -88,6 +88,9 @@ def setup_data(config):
         "test": os.path.join(cache_dir, "sampler_test.pkl"),
     }
 
+    # Dry bin sampling weight (0.0 = uniform, >0 = overweight dry bin)
+    dry_bin_weight = config.sampling.get("dry_bin_weight", 0.0)
+
     # Create DataModule
     print("Creating DataModule...")
     datamodule = split.DataModule(
@@ -101,7 +104,8 @@ def setup_data(config):
         sample_shape=tuple(config.pipeline.sample_shape),
         sampler_file=sampler_file,
         valid_seed=1234,
-        test_seed=2345
+        test_seed=2345,
+        dry_bin_weight=dry_bin_weight,
     )
     print("DataModule ready.")
     return datamodule

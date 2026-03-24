@@ -216,6 +216,9 @@ class PLMSSampler:
 
             # current prediction for x_0
             pred_x0 = (x - sqrt_one_minus_at * e_t) / a_t.sqrt()
+            if getattr(self, 'clip_denoised', False):
+                lo, hi = getattr(self, 'clip_range', (-5.0, 4.0))
+                pred_x0 = pred_x0.clamp(lo, hi)
             if quantize_denoised:
                 pred_x0, _, *_ = self.model.first_stage_model.quantize(pred_x0)
             # direction pointing to x_t

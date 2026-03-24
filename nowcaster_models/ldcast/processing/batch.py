@@ -91,10 +91,12 @@ class BatchGenerator:
         batch_size=32,
         interval=timedelta(minutes=5),
         random_seed=None,
-        augment=False
+        augment=False,
+        dry_bin_weight=0.0
     ):
         super().__init__()
         self.batch_size = batch_size
+        self.dry_bin_weight = dry_bin_weight
         self.interval = interval
         self.interval_secs = np.int64(self.interval.total_seconds())
         self.variables = variables
@@ -167,6 +169,9 @@ class BatchGenerator:
             print(f"Loading cached sampler from {sampler_file}.")
             with open(sampler_file, 'rb') as f:
                 self.sampler = pickle.load(f)
+
+        # Set dry bin weight on the sampler (works with both fresh and cached samplers)
+        self.sampler.dry_bin_weight = self.dry_bin_weight
 
     def setup_index(self, raw_name, raw_data, box_size):
         """Create a PatchIndex for a single raw data variable.

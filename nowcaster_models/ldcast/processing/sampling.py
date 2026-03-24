@@ -136,6 +136,9 @@ class EqualFrequencySampler:
     def __call__(self, num):
         """Draw `num` anchor positions with equal frequency across bins.
 
+        If dry_bin_weight > 0, bin 0 (dry/zero) gets that probability and
+        the remaining bins share the rest equally. Otherwise uniform.
+
         Parameters
         ----------
         num : int
@@ -146,8 +149,14 @@ class EqualFrequencySampler:
         np.ndarray
             Shape (num, 3) — columns are [t0, i0, j0].
         """
-        # Pick a random bin for each sample (uniform across num_bins)
-        bins = self.rng.randint(self.num_bins, size=num)
+        dry_weight = getattr(self, 'dry_bin_weight', 0.0)
+        if dry_weight > 0 and self.num_bins > 1:
+            weights = np.full(self.num_bins, (1 - dry_weight) / (self.num_bins - 1))
+            weights[0] = dry_weight
+            bins = self.rng.choice(self.num_bins, size=num, p=weights)
+        else:
+            # Pick a random bin for each sample (uniform across num_bins)
+            bins = self.rng.randint(self.num_bins, size=num)
         coords = np.stack(
             [self.get_bin_sample(b) for b in bins],
             axis=0

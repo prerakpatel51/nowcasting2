@@ -35,7 +35,7 @@ python -m nowcaster_models.ldcast.train --config path/to/config.yaml
 --- LDCAST FORECAST ---
 
 # Run forecast with trained checkpoint
-python -m nowcaster_models.ldcast.forecast --checkpoint nowcaster_models/ldcast/checkpoints/best.ckpt
+python -m nowcaster_models.ldcast.forecast --checkpoint /home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints_improved_v2/best-epoch=28-val_loss_ema=0.0398.ckpt  --steps 300
 
 # Run forecast with more ensemble samples
 python -m nowcaster_models.ldcast.forecast --checkpoint /home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints/epoch-epoch=20-val_loss_ema=0.0368.ckpt --num_samples 20

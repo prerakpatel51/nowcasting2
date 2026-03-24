@@ -54,6 +54,8 @@ def make_ddim_timesteps(ddim_discr_method, num_ddim_timesteps, num_ddpm_timestep
     # assert ddim_timesteps.shape[0] == num_ddim_timesteps
     # add one to get the final alpha values right (the ones from first scale to data during sampling)
     steps_out = ddim_timesteps + 1
+    # Clamp to valid range so steps that don't evenly divide num_ddpm_timesteps still work
+    steps_out = np.clip(steps_out, 0, num_ddpm_timesteps - 1)
     if verbose:
         print(f'Selected timesteps for ddim sampler: {steps_out}')
     return steps_out
@@ -200,13 +202,27 @@ class GroupNorm32(nn.GroupNorm):
         return super().forward(x.float()).type(x.dtype)
 
 
+_USE_GROUPNORM = False
+
+def set_use_groupnorm(flag):
+    """Enable or disable GroupNorm in the UNet.
+
+    Called before model construction based on config.model.use_groupnorm.
+    When False (default), uses nn.Identity() for backward compatibility.
+    """
+    global _USE_GROUPNORM
+    _USE_GROUPNORM = flag
+
+
 def normalization(channels):
     """
     Make a standard normalization layer.
     :param channels: number of input channels.
     :return: an nn.Module for normalization.
     """
-    return nn.Identity() #GroupNorm32(32, channels)
+    if _USE_GROUPNORM:
+        return GroupNorm32(32, channels)
+    return nn.Identity()
 
 
 def noise_like(shape, device, repeat=False):

@@ -15,9 +15,11 @@ def setup_genforecast_training(
     model_dir,
     lr=1e-4,
     lr_warmup=0,
+    beta_schedule="linear",
 ):
     ldm = diffusion.LatentDiffusion(model, autoencoder,
-        context_encoder=context_encoder, lr=lr, lr_warmup=lr_warmup)
+        context_encoder=context_encoder, lr=lr, lr_warmup=lr_warmup,
+        beta_schedule=beta_schedule)
 
     num_gpus = torch.cuda.device_count()
     accelerator = "gpu" if (num_gpus > 0) else "cpu"
