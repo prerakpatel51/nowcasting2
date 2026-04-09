@@ -1,7 +1,7 @@
 data:
   h5_path: /home1/ppatel2025/nowcasting2/data/imerg_data_h5_clean/imerg_data.h5
   patch_dir: /home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/data/IMERG
-  cache_dir: /home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/cache_improved
+  cache_dir: /home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/cache_overpred
   var_name: IMERG
 
 patches:
@@ -27,8 +27,8 @@ sampling:
   bins_low: 0.1
   bins_high: 20.0
   num_bins: 6                       # reduced from 10 for better per-bin representation
-  batch_size: 1
-  dry_bin_weight: 0.35              # give dry/zero bin 35% sampling probability
+  batch_size: 8
+  dry_bin_weight: 0.20              # give dry/zero bin 35% sampling probability
 
 transform:
   log: true
@@ -51,7 +51,7 @@ model:
   num_res_blocks: 2
   lr: 5e-5                          # reduced from 1e-4
   lr_warmup: 500
-  model_dir: /home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints_improved
+  model_dir: /home1/ppatel2025/nowcasting2/nowcaster_models/ldcast/checkpoints_overpred
   use_groupnorm: true               # enable GroupNorm in UNet ResBlocks
   dropout: 0.1                      # dropout in UNet ResBlocks
   beta_schedule: cosine             # cosine noise schedule instead of linear
